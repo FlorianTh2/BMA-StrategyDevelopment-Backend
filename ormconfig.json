@@ -1,0 +1,18 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "Florian1234",
+  "database": "BusinessModelDigitalHealthBackendAlgorithm2ContextPostgre",
+  "logging": false,
+  "entities": [
+    "src/entities/**/*.ts"
+  ],
+  "migrations": [
+    "src/migration/**/*.ts"
+  ],
+  "subscribers": [
+    "src/subscriber/**/*.ts"
+  ]
+}
