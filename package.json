@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "ts-node src/index.ts",
     "test": "echo \" No tests specified\" && exit 1"
   },
   "repository": "git@github.com:FlorianTh2/BusinessModelDigitalHealthBackend_Algorithm2.git",
