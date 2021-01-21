@@ -11,8 +11,6 @@
         "strictNullChecks": true,
         "strictFunctionTypes": true,
         "noImplicitThis": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
         "allowSyntheticDefaultImports": true,
@@ -23,7 +21,9 @@
         "baseUrl": "./",
         "paths": {
             "@/*": ["./*"]
-        }
+        },
+        "noUnusedParameters": false,
+        "noUnusedLocals": false
     },
     "exclude": ["node_modules"],
     "include": ["./src/**/*.tsx", "./src/**/*.ts"]

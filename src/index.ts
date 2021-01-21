@@ -1,8 +1,12 @@
 import "reflect-metadata";
 import "dotenv/config";
+import * as loader from "./installers/index";
 
-function main() {
-    console.log("hello world");
+async function main() {
+    loader.init("hi");
+    const app = express();
 }
 
-main();
+main().catch((err) => {
+    console.log(err);
+});
