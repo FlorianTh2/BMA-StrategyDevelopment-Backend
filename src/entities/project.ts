@@ -10,6 +10,11 @@ export class Project {
     })
     name: string;
 
+    @Column({
+        length: 100,
+    })
+    name12: string;
+
     @Column("text")
     description: string;
 }

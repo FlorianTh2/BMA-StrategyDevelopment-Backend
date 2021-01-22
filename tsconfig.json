@@ -18,12 +18,9 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "resolveJsonModule": true,
-        "baseUrl": "./",
-        "paths": {
-            "@/*": ["./*"]
-        },
         "noUnusedParameters": false,
-        "noUnusedLocals": false
+        "noUnusedLocals": false,
+        "baseUrl": "./"
     },
     "exclude": ["node_modules"],
     "include": ["./src/**/*.tsx", "./src/**/*.ts"]
