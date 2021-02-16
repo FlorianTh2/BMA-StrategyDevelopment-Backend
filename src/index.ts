@@ -3,6 +3,8 @@ import "dotenv/config";
 import { install_packages } from "./installers/index";
 import express, { Express } from "express";
 
+// npm run typeorm migration:generate -- -n "database init"
+// npm run typeorm migration:run
 async function main() {
     const app: Express = express();
 

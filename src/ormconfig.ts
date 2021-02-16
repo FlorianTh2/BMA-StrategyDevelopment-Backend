@@ -1,7 +1,5 @@
-import { ConnectionOptions } from "typeorm";
-import * as path from "path";
-
-const isCompiled = path.extname(__filename).includes("js");
+import { Project } from "./entities/project";
+import { User } from "./entities/user";
 
 export default {
     type: "postgres",
@@ -10,15 +8,16 @@ export default {
     username: process.env.TYPEORM_USERNAME || "postgres",
     password: process.env.TYPEORM_PASSWORD || "postgres",
     database: process.env.TYPEORM_DATABASE_Name || "node_project",
-    synchronize: !process.env.TYPEORM_SYNCHRONIZE,
-    logging: !process.env.TYPEORM_LOGGING,
+    synchronize: false,
+    logging: false,
     autoReconnect: true,
     reconnectTries: Number.MAX_VALUE,
     reconnectInterval: 2000,
-    entities: ["dist/entities/*.js"],
-    migrations: ["dist/migrations/*.js"],
+
+    entities: ["./src/entities/*"],
+    migrations: ["src/migrations/*"],
     cli: {
-        entitiesDir: "**/entities",
+        entitiesDir: "src/entities",
         migrationsDir: "src/migrations",
     },
-} as ConnectionOptions;
+};
