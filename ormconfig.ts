@@ -1,5 +1,5 @@
-import { Project } from "./entities/project";
-import { User } from "./entities/user";
+import { Project } from "./src/entities/project";
+import { User } from "./src/entities/user";
 
 export default {
     type: "postgres",

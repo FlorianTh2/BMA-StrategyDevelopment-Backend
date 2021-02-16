@@ -1,0 +1,28 @@
+type Query {
+    project(projectId: ID!): Project
+    projects: [Project!]!
+
+    user: User!
+    users: [User!]!
+}
+
+type Mutation {
+    login(email: String!, password: String!): String
+    signup(name: String!, email: String!, password: String!): String
+
+    # createProject(name: String): Project!
+    # updateProject(projectId: ID!, data: ProjectUpdateInput!): Project!
+    # deleteProject(projectId: ID!): Project!
+}
+
+type Project {
+    id: ID!
+    name: String!
+    description: String!
+}
+
+
+type User {
+    id: ID!
+    name: String!
+}

@@ -8,13 +8,15 @@
         "start:prod": "node dist/index.js",
         "lint": "eslint src --ext .ts --fix",
         "format": "prettier --write . --config .prettierrc.js",
-        "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js --config src/ormconfig.ts"
+        "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js --config ormconfig.ts"
     },
     "repository": "git@github.com:FlorianTh2/BusinessModelDigitalHealthBackend_Algorithm2.git",
     "author": "<thom.florian.1997@googlemail.com>",
     "license": "MIT",
     "devDependencies": {
+        "@types/bcrypt": "^3.0.0",
         "@types/express": "^4.17.11",
+        "@types/jsonwebtoken": "^8.5.0",
         "@types/node": "^14.14.28",
         "@typescript-eslint/eslint-plugin": "^4.14.0",
         "@typescript-eslint/parser": "^4.14.0",
