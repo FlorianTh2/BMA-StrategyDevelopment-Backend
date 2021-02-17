@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, BaseEntity, ManyToMany, JoinTab
 import { Project } from "./project";
 
 @Entity()
-export class User extends BaseEntity {
+export class MaturityModel extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -11,6 +11,6 @@ export class User extends BaseEntity {
     })
     name: string;
 
-    @OneToMany(() => Project, (project) => project.user)
-    projects: Project[];
+    // @OneToMany(() => ModelCategory, (modelCategory) => modelCategory.maturityModel)
+    // modelCategories: ModelCategory[];
 }
