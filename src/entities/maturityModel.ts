@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, BaseEntity, ManyToMany, JoinTable, OneToMany } from "typeorm";
 import { Project } from "./project";
+import { UserPartialModel } from "./userPartialModel";
 
 @Entity()
 export class MaturityModel extends BaseEntity {
@@ -11,6 +12,11 @@ export class MaturityModel extends BaseEntity {
     })
     name: string;
 
-    // @OneToMany(() => ModelCategory, (modelCategory) => modelCategory.maturityModel)
-    // modelCategories: ModelCategory[];
+    @Column({
+        nullable: true,
+    })
+    maturityLevel: number;
+
+    @OneToMany(() => UserPartialModel, (userPartialModel) => userPartialModel.maturityModel)
+    userPartialModels: UserPartialModel[];
 }

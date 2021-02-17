@@ -9,7 +9,31 @@ export class User extends BaseEntity {
     @Column({
         length: 100,
     })
-    name: string;
+    firstname: string;
+
+    @Column({
+        length: 100,
+    })
+    lastname: string;
+
+    @Column({
+        unique: true,
+    })
+    email: string;
+
+    @Column()
+    password: string;
+
+    @Column()
+    phoneNumber: string;
+
+    @Column({
+        nullable: true,
+    })
+    verificationCode: string;
+
+    @Column({ default: false })
+    verified: boolean;
 
     @OneToMany(() => Project, (project) => project.user)
     projects: Project[];

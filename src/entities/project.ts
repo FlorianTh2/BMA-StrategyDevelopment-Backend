@@ -12,7 +12,9 @@ export class Project extends BaseEntity {
     })
     name: string;
 
-    @Column("text")
+    @Column("text", {
+        nullable: true,
+    })
     description: string;
 
     @ManyToOne(() => User, (user) => user.projects)
