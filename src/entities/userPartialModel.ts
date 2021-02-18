@@ -21,10 +21,10 @@ export class UserPartialModel extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({
+    @Column("int", {
         nullable: true,
     })
-    maturityLevelEvaluationAreas: number;
+    maturityLevelEvaluationMetrics: number;
 
     @ManyToOne(() => PartialModel, (partialModel) => partialModel.userPartialModels)
     partialModel: PartialModel;

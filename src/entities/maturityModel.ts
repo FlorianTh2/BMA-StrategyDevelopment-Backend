@@ -22,7 +22,7 @@ export class MaturityModel extends BaseEntity {
     })
     name: string;
 
-    @Column({
+    @Column("int", {
         nullable: true,
     })
     maturityLevel: number;

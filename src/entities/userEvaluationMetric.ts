@@ -21,7 +21,7 @@ export class UserEvaluationMetric extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column("int")
     valueEvaluationMetric: number;
 
     @ManyToOne(() => UserPartialModel, (userPartialModel) => userPartialModel.userEvaluationAreas)

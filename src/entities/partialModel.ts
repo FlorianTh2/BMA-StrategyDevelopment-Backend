@@ -32,7 +32,7 @@ export class PartialModel extends BaseEntity {
     })
     description: string;
 
-    @Column()
+    @Column("int")
     weight: number;
 
     @OneToMany(() => EvaluationMetric, (evaluationArea) => evaluationArea.partialModel)

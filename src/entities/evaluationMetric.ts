@@ -32,7 +32,7 @@ export class EvaluationMetric extends BaseEntity {
     })
     description: string;
 
-    @Column()
+    @Column("int")
     weight: number;
 
     @OneToMany(() => UserEvaluationMetric, (userEvaluationArea) => userEvaluationArea.evaluationArea)
