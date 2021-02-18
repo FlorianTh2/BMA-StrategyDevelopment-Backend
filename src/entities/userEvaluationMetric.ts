@@ -21,14 +21,14 @@ export class UserEvaluationMetric {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column("int")
+    @Column("float")
     valueEvaluationMetric: number;
 
     @ManyToOne(() => UserPartialModel, (userPartialModel) => userPartialModel.userEvaluationAreas)
     userPartialModel: UserPartialModel;
 
     @ManyToOne(() => EvaluationMetric, (evaluationArea) => evaluationArea.userEvaluationAreas)
-    evaluationArea: EvaluationMetric;
+    evaluationMetric: EvaluationMetric;
 
     @CreateDateColumn()
     created: Date;

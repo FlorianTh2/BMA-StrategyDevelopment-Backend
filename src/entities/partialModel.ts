@@ -32,11 +32,11 @@ export class PartialModel {
     })
     description: string;
 
-    @Column("int")
+    @Column("float")
     weight: number;
 
     @OneToMany(() => EvaluationMetric, (evaluationArea) => evaluationArea.partialModel)
-    evaluationAreas: EvaluationMetric[];
+    evaluationMetrics: EvaluationMetric[];
 
     @OneToMany(() => UserPartialModel, (userPartialModel) => userPartialModel.partialModel)
     userPartialModels: UserPartialModel[];

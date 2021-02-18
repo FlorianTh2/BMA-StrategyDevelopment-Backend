@@ -21,7 +21,7 @@ export class UserPartialModel {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column("int", {
+    @Column("float", {
         nullable: true,
     })
     maturityLevelEvaluationMetrics: number;

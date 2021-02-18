@@ -22,7 +22,7 @@ export class MaturityModel {
     })
     name: string;
 
-    @Column("int", {
+    @Column("float", {
         nullable: true,
     })
     maturityLevel: number;

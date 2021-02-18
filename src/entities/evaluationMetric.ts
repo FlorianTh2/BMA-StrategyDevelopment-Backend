@@ -32,13 +32,13 @@ export class EvaluationMetric {
     })
     description: string;
 
-    @Column("int")
+    @Column("float")
     weight: number;
 
-    @OneToMany(() => UserEvaluationMetric, (userEvaluationArea) => userEvaluationArea.evaluationArea)
+    @OneToMany(() => UserEvaluationMetric, (userEvaluationArea) => userEvaluationArea.evaluationMetric)
     userEvaluationAreas: UserEvaluationMetric[];
 
-    @ManyToOne(() => PartialModel, (partialModel) => partialModel.evaluationAreas)
+    @ManyToOne(() => PartialModel, (partialModel) => partialModel.evaluationMetrics)
     partialModel: PartialModel;
 
     @CreateDateColumn()

@@ -32,7 +32,7 @@ export class Project {
 
     @ManyToMany(() => MaturityModel)
     @JoinTable()
-    projects: MaturityModel[];
+    maturityModels: MaturityModel[];
 
     @CreateDateColumn()
     created: Date;

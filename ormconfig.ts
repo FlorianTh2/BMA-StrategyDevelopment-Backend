@@ -8,6 +8,7 @@ export default {
     username: process.env.TYPEORM_USERNAME || "postgres",
     password: process.env.TYPEORM_PASSWORD || "postgres",
     database: process.env.TYPEORM_DATABASE_Name || "node_project",
+
     synchronize: false,
     logging: false,
     autoReconnect: true,
@@ -16,6 +17,8 @@ export default {
 
     entities: ["./src/entities/*"],
     migrations: ["src/migrations/*"],
+    seeds: ["src/seeds/**/*{.ts,.js}"],
+    factories: ["src/factories/**/*{.ts,.js}"],
     cli: {
         entitiesDir: "src/entities",
         migrationsDir: "src/migrations",
