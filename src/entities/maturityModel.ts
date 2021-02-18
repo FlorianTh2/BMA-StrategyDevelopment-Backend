@@ -13,7 +13,7 @@ import { Project } from "./project";
 import { UserPartialModel } from "./userPartialModel";
 
 @Entity()
-export class MaturityModel extends BaseEntity {
+export class MaturityModel {
     @PrimaryGeneratedColumn()
     id: number;
 

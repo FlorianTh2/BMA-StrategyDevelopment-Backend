@@ -12,7 +12,7 @@ import {
 import { Project } from "./project";
 
 @Entity()
-export class User extends BaseEntity {
+export class User {
     @PrimaryGeneratedColumn()
     id: number;
 

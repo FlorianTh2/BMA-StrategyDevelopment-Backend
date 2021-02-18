@@ -17,7 +17,7 @@ import { UserPartialModel } from "./userPartialModel";
 import { EvaluationMetric } from "./evaluationMetric";
 
 @Entity()
-export class UserEvaluationMetric extends BaseEntity {
+export class UserEvaluationMetric {
     @PrimaryGeneratedColumn()
     id: number;
 

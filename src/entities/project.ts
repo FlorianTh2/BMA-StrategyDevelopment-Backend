@@ -13,7 +13,7 @@ import { MaturityModel } from "./maturityModel";
 import { User } from "./user";
 
 @Entity()
-export class Project extends BaseEntity {
+export class Project {
     @PrimaryGeneratedColumn()
     id: number;
 
