@@ -1,4 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity, ManyToMany, JoinTable, OneToMany } from "typeorm";
+import {
+    Entity,
+    Column,
+    PrimaryGeneratedColumn,
+    BaseEntity,
+    ManyToMany,
+    JoinTable,
+    OneToMany,
+    CreateDateColumn,
+    UpdateDateColumn,
+} from "typeorm";
 import { Project } from "./project";
 
 @Entity()
@@ -37,4 +47,10 @@ export class User extends BaseEntity {
 
     @OneToMany(() => Project, (project) => project.user)
     projects: Project[];
+
+    @CreateDateColumn()
+    created: Date;
+
+    @UpdateDateColumn()
+    updated: Date;
 }

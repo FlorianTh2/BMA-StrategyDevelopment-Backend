@@ -7,24 +7,32 @@ import {
     JoinTable,
     OneToMany,
     ManyToOne,
+    CreateDateColumn,
+    UpdateDateColumn,
 } from "typeorm";
 import { Project } from "./project";
 import { User } from "./user";
 import { MaturityModel } from "./maturityModel";
 import { UserPartialModel } from "./userPartialModel";
-import { EvaluationArea } from "./evaluationArea";
+import { EvaluationMetric } from "./evaluationMetric";
 
 @Entity()
-export class UserEvaluationArea extends BaseEntity {
+export class UserEvaluationMetric extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    valueEvaluationArea: number;
+    valueEvaluationMetric: number;
 
     @ManyToOne(() => UserPartialModel, (userPartialModel) => userPartialModel.userEvaluationAreas)
     userPartialModel: UserPartialModel;
 
-    @ManyToOne(() => EvaluationArea, (evaluationArea) => evaluationArea.userEvaluationAreas)
-    evaluationArea: EvaluationArea;
+    @ManyToOne(() => EvaluationMetric, (evaluationArea) => evaluationArea.userEvaluationAreas)
+    evaluationArea: EvaluationMetric;
+
+    @CreateDateColumn()
+    created: Date;
+
+    @UpdateDateColumn()
+    updated: Date;
 }

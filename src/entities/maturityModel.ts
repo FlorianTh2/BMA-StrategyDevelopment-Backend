@@ -1,4 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity, ManyToMany, JoinTable, OneToMany } from "typeorm";
+import {
+    Entity,
+    Column,
+    PrimaryGeneratedColumn,
+    BaseEntity,
+    ManyToMany,
+    JoinTable,
+    OneToMany,
+    CreateDateColumn,
+    UpdateDateColumn,
+} from "typeorm";
 import { Project } from "./project";
 import { UserPartialModel } from "./userPartialModel";
 
@@ -19,4 +29,10 @@ export class MaturityModel extends BaseEntity {
 
     @OneToMany(() => UserPartialModel, (userPartialModel) => userPartialModel.maturityModel)
     userPartialModels: UserPartialModel[];
+
+    @CreateDateColumn()
+    created: Date;
+
+    @UpdateDateColumn()
+    updated: Date;
 }

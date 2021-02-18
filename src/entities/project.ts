@@ -1,4 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity, ManyToMany, JoinTable, ManyToOne } from "typeorm";
+import {
+    Entity,
+    Column,
+    PrimaryGeneratedColumn,
+    BaseEntity,
+    ManyToMany,
+    JoinTable,
+    ManyToOne,
+    CreateDateColumn,
+    UpdateDateColumn,
+} from "typeorm";
 import { MaturityModel } from "./maturityModel";
 import { User } from "./user";
 
@@ -23,4 +33,10 @@ export class Project extends BaseEntity {
     @ManyToMany(() => MaturityModel)
     @JoinTable()
     projects: MaturityModel[];
+
+    @CreateDateColumn()
+    created: Date;
+
+    @UpdateDateColumn()
+    updated: Date;
 }
