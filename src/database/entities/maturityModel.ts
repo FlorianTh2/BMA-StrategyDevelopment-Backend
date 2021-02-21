@@ -27,6 +27,9 @@ export class MaturityModel {
     })
     maturityLevel: number;
 
+    @ManyToMany(() => Project, (project) => project.maturityModels)
+    projects: Project[];
+
     @OneToMany(() => UserPartialModel, (userPartialModel) => userPartialModel.maturityModel)
     userPartialModels: UserPartialModel[];
 

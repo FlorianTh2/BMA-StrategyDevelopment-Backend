@@ -33,7 +33,7 @@ export class Project {
     @Column({ nullable: true })
     userId: number;
 
-    @ManyToMany(() => MaturityModel)
+    @ManyToMany(() => MaturityModel, (maturityModel) => maturityModel.projects)
     @JoinTable()
     maturityModels: MaturityModel[];
 

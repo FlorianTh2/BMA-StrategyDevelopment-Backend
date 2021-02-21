@@ -6,7 +6,6 @@ import { User } from "../../database/entities/user";
 // naming based on output (what it loads), not on input
 export function createProjectLoaderByUserId() {
     return new DataLoader<number, Project[]>(async (userIds) => {
-        console.log("hi4");
         const userWithAttachedProjects = await getRepository(User).findByIds(userIds as number[], {
             relations: ["projects"],
         });

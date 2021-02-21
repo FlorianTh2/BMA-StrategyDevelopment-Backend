@@ -58,6 +58,7 @@ type MaturityModel {
     name: String
     maturityLevel: Float
 
+    projects: [Project!]!
     userPartialModels: [UserPartialModel!]!
 
     created: String!
