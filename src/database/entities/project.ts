@@ -40,6 +40,12 @@ export class Project {
     @CreateDateColumn()
     created: Date;
 
+    @Column()
+    creator: string;
+
     @UpdateDateColumn()
     updated: Date;
+
+    @Column()
+    updater: string;
 }

@@ -10,6 +10,7 @@ import {
     UpdateDateColumn,
 } from "typeorm";
 import { Project } from "./project";
+import { SYSTEM } from "../../constants";
 
 @Entity()
 export class User {
@@ -53,6 +54,12 @@ export class User {
     @CreateDateColumn()
     created: Date;
 
+    @Column({ default: SYSTEM })
+    creator: string;
+
     @UpdateDateColumn()
     updated: Date;
+
+    @Column({ default: SYSTEM })
+    updater: string;
 }

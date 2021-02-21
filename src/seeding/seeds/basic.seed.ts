@@ -7,6 +7,7 @@ import { PartialModel } from "../../database/entities/partialModel";
 import { EvaluationMetric } from "../../database/entities/evaluationMetric";
 import { UserPartialModel } from "../../database/entities/userPartialModel";
 import { UserEvaluationMetric } from "../../database/entities/userEvaluationMetric";
+import { SYSTEM } from "../../constants";
 
 export default class CreateBasicSeed implements Seeder {
     public async run(factory: Factory, connection: Connection): Promise<any> {
@@ -18,6 +19,8 @@ export default class CreateBasicSeed implements Seeder {
 
         const maturityModels = await factory(MaturityModel)()
             .map(async (a) => {
+                a.creator = user.id.toString();
+                a.updater = user.id.toString();
                 return a;
             })
             .createMany(2);
@@ -26,6 +29,8 @@ export default class CreateBasicSeed implements Seeder {
             .map(async (a) => {
                 a.user = user;
                 a.maturityModels = maturityModels;
+                a.creator = user.id.toString();
+                a.updater = user.id.toString();
                 return a;
             })
             .createMany(3);
@@ -134,6 +139,8 @@ export default class CreateBasicSeed implements Seeder {
                                                       .map(async (d) => {
                                                           d.name = c.name;
                                                           d.weight = c.weight;
+                                                          d.creator = SYSTEM;
+                                                          d.updater = SYSTEM;
                                                           return d;
                                                       })
                                                       .create(),
@@ -144,6 +151,8 @@ export default class CreateBasicSeed implements Seeder {
                                 Array.isArray(a.subPartialModels) && a.subPartialModels.length
                                     ? await Promise.all(resolvePartialModelsAcrossAllNestedLevels(a.subPartialModels))
                                     : [];
+                            b.creator = SYSTEM;
+                            b.updater = SYSTEM;
                             return b;
                         })
                         .create(),
@@ -170,6 +179,8 @@ export default class CreateBasicSeed implements Seeder {
                                                   await factory(UserEvaluationMetric)()
                                                       .map(async (d) => {
                                                           d.evaluationMetric = c;
+                                                          d.creator = user.id.toString();
+                                                          d.updater = user.id.toString();
                                                           return d;
                                                       })
                                                       .create(),
@@ -182,6 +193,8 @@ export default class CreateBasicSeed implements Seeder {
                                           resolveUserPartialModelsAcrossAllNestedLevels(a.subPartialModels),
                                       )
                                     : [];
+                            b.creator = user.id.toString();
+                            b.updater = user.id.toString();
                             return b;
                         })
                         .create(),
