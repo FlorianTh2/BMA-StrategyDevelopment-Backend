@@ -171,6 +171,7 @@ export default class CreateBasicSeed implements Seeder {
                     await factory(UserPartialModel)()
                         .map(async (b) => {
                             b.partialModel = a;
+                            b.maturityModel = maturityModels[0];
                             b.userEvaluationAreas =
                                 Array.isArray(a.evaluationMetrics) && a.evaluationMetrics.length
                                     ? await Promise.all(
