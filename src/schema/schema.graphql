@@ -5,10 +5,11 @@ type Query {
     user(id: ID!): User!
     users: [User!]!
 
+    maturityModel(id: ID!): MaturityModel!
+    maturityModels: [MaturityModel!]!
+
     userPartialModel(id: ID!): UserPartialModel!
     userPartialModels: [UserPartialModel!]!
-
-
 }
 
 type Mutation {

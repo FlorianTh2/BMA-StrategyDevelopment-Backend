@@ -3,10 +3,12 @@ import { userQuery } from "./user.resolver";
 import { User } from "./nested/user";
 import { Project } from "./nested/project";
 import { userPartialModelQuery } from "./userPartialModel.resolver";
+import { maturityModelQuery } from "./maturityModel.resolver";
 
 const Query = {
     ...projectQuery,
     ...userQuery,
+    ...maturityModelQuery,
     ...userPartialModelQuery,
 };
 
