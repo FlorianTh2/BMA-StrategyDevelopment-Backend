@@ -4,6 +4,8 @@ import { createUserLoaderByProjectId } from "./user/createUserLoaderByProjectId"
 import { createProjectLoaderByMaturityModelId } from "./project/createProjectLoaderByMaturityModelId";
 import { createUserPartialModelLoaderByMaturityModelId } from "./userPartialModel/createUserPartialModelLoaderByMaturityModelId";
 import { createMaturityModelLoaderByUserPartialModelId } from "./maturityModel/createMaturityModelLoaderByUserPartialModelId";
+import { createMaturityModelLoaderByProjectId } from "./maturityModel/createMaturityModelLoaderByProjectId";
+import { createUserPartialModelLoaderByUserPartialModelId } from "./userPartialModel/createUserPartialModelLoaderByUserPartialModelId";
 
 export function createDataloaders(): Dataloaders {
     return {
@@ -15,10 +17,12 @@ export function createDataloaders(): Dataloaders {
             loaderByProjectId: createUserLoaderByProjectId(),
         },
         maturityModel: {
+            loaderByProjectId: createMaturityModelLoaderByProjectId(),
             loaderByUserPartialModelId: createMaturityModelLoaderByUserPartialModelId(),
         },
         userPartialModel: {
             loaderByMaturityModelId: createUserPartialModelLoaderByMaturityModelId(),
+            loaderByUserPartialModelId: createUserPartialModelLoaderByUserPartialModelId(),
         },
     };
 }

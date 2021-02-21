@@ -3,6 +3,8 @@ import { createProjectLoaderByUserId } from "../dataLoaders/project/createProjec
 import { createProjectLoaderByMaturityModelId } from "../dataLoaders/project/createProjectLoaderByMaturityModelId";
 import { createUserPartialModelLoaderByMaturityModelId } from "../dataLoaders/userPartialModel/createUserPartialModelLoaderByMaturityModelId";
 import { createMaturityModelLoaderByUserPartialModelId } from "../dataLoaders/maturityModel/createMaturityModelLoaderByUserPartialModelId";
+import { createMaturityModelLoaderByProjectId } from "../dataLoaders/maturityModel/createMaturityModelLoaderByProjectId";
+import { createUserPartialModelLoaderByUserPartialModelId } from "../dataLoaders/userPartialModel/createUserPartialModelLoaderByUserPartialModelId";
 
 export interface Dataloaders {
     project: {
@@ -14,8 +16,10 @@ export interface Dataloaders {
     };
     maturityModel: {
         loaderByUserPartialModelId: ReturnType<typeof createMaturityModelLoaderByUserPartialModelId>;
+        loaderByProjectId: ReturnType<typeof createMaturityModelLoaderByProjectId>;
     };
     userPartialModel: {
         loaderByMaturityModelId: ReturnType<typeof createUserPartialModelLoaderByMaturityModelId>;
+        loaderByUserPartialModelId: ReturnType<typeof createUserPartialModelLoaderByUserPartialModelId>;
     };
 }

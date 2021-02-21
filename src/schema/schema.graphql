@@ -71,11 +71,11 @@ type UserPartialModel {
     id: ID!
     maturityLevelEvaluationMetrics: Float
 
-    partialModel: PartialModel!
-    userEvaluationAreas: [UserEvaluationMetric!]!
     maturityModel: MaturityModel!
-    subUserPartialModels: [UserPartialModel]!
     superUserPartialModel: UserPartialModel
+    subUserPartialModels: [UserPartialModel]!
+    userEvaluationAreas: [UserEvaluationMetric!]!
+    partialModel: PartialModel!
 
     created: String!
     creator: String!
