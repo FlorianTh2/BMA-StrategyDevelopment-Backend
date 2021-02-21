@@ -3,6 +3,7 @@ import { createProjectLoaderByUserId } from "./project/createProjectLoaderByUser
 import { createUserLoaderByProjectId } from "./user/createUserLoaderByProjectId";
 import { createProjectLoaderByMaturityModelId } from "./project/createProjectLoaderByMaturityModelId";
 import { createUserPartialModelLoaderByMaturityModelId } from "./userPartialModel/createUserPartialModelLoaderByMaturityModelId";
+import { createMaturityModelLoaderByUserPartialModelId } from "./maturityModel/createMaturityModelLoaderByUserPartialModelId";
 
 export function createDataloaders(): Dataloaders {
     return {
@@ -12,6 +13,9 @@ export function createDataloaders(): Dataloaders {
         },
         user: {
             loaderByProjectId: createUserLoaderByProjectId(),
+        },
+        maturityModel: {
+            loaderByUserPartialModelId: createMaturityModelLoaderByUserPartialModelId(),
         },
         userPartialModel: {
             loaderByMaturityModelId: createUserPartialModelLoaderByMaturityModelId(),

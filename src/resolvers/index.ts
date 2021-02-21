@@ -8,6 +8,7 @@ import { userEvaluationMetricQuery } from "./userEvaluationMetric.resolver";
 import { partialModelQuery } from "./partialModel.resolver";
 import { evaluationMetricQuery } from "./evaluationMetric.resolver";
 import { MaturityModel } from "./nested/maturityModel";
+import { UserPartialModel } from "./nested/UserPartialModel";
 
 const Query = {
     ...projectQuery,
@@ -23,6 +24,7 @@ const NestedFields = {
     User,
     Project,
     MaturityModel,
+    UserPartialModel,
 };
 
 const Mutation = {};
