@@ -4,6 +4,8 @@ type Query {
 
     user(id: ID!): User!
     users: [User!]!
+
+
 }
 
 type Mutation {
@@ -36,3 +38,31 @@ type Project {
     updated: String!
 }
 
+type MaturityModel {
+    id: ID!
+    name: string
+    maturityLevel: number;
+
+    userPartialModels: [UserPartialModel!]!
+
+    created: Date!
+    creator: String!
+    updated: Date!
+    updater: String!
+}
+
+type UserPartialModel {
+    id: ID!
+    maturityLevelEvaluationMetrics: Float
+
+    partialModel: PartialModel!
+    userEvaluationAreas: [UserEvaluationMetric!]!
+    maturityModel: MaturityModel!
+    subUserPartialModels: [UserPartialModel]!
+    superUserPartialModel: UserPartialModel
+
+    created: Date!
+    creator: String!
+    updated: Date!
+    updater: String!
+}

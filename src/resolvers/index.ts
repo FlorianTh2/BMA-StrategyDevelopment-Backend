@@ -2,10 +2,12 @@ import { projectMutation, projectQuery } from "./project.resolver";
 import { userQuery } from "./user.resolver";
 import { User } from "./nested/user";
 import { Project } from "./nested/project";
+import { userPartialModelQuery } from "./userPartialModel.resolver";
 
 const Query = {
     ...projectQuery,
     ...userQuery,
+    ...userPartialModelQuery,
 };
 
 const NestedFields = {

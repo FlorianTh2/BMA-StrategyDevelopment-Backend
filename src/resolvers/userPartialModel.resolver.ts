@@ -1,25 +1,25 @@
 import { Project } from "../database/entities/project";
 import { ApolloContext } from "../types/apolloContext";
 import { getRepository } from "typeorm";
+import { UserPartialModel } from "../database/entities/userPartialModel";
 
-export const projectQuery = {
-    async project(parent, args, context: ApolloContext, info) {
+export const userPartialModelQuery = {
+    async userPartialModel(parent, args, context: ApolloContext, info) {
         // resolver input
         const id = args.id;
 
         // resolver business logic
-        const dbResult = await context.typeormManager.getRepository(Project).findOne({ where: { id: id } });
+        const dbResult = await context.typeormManager.getRepository(UserPartialModel).findOne({ where: { id: id } });
 
         // resolver return
         const resolverResult = { ...dbResult };
-        console.log(resolverResult);
         return resolverResult;
     },
-    async projects(parent, args, context: ApolloContext, info) {
+    async userPartialModels(parent, args, context: ApolloContext, info) {
         // resolver input
 
         // resolver business logic
-        const dbResult = await context.typeormManager.getRepository(Project).find();
+        const dbResult = await context.typeormManager.getRepository(UserPartialModel).find();
 
         // resolver return
         const resolverResult = [...dbResult];
@@ -27,4 +27,4 @@ export const projectQuery = {
     },
 };
 
-export const projectMutation = {};
+export const userPartialModelMutation = {};
