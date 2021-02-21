@@ -1,16 +1,30 @@
 import { Project } from "../entities/project";
+import { ApolloContext } from "../types/apolloContext";
+import { getRepository } from "typeorm";
 
-export function projectQuery() {
-    return {
-        project(parent, args, context, info) {
-            // context.user.id;
-            return { id: args.project.projectId, name: "testName", description: "testDescription" } as Project;
-        },
-        projects(parent, args, context, info) {
-            // context.user.id;
-            return [{ id: 1, name: "testName", description: "testDescription" }] as [Project];
-        },
-    };
-}
+export const projectQuery = {
+    async project(parent, args, context: ApolloContext, info) {
+        // resolver input
+        const id = args.id;
 
-export function projectMutation() {}
+        // resolver business logic
+        const dbResult = await context.typeormManager.getRepository(Project).findOne({ where: { id: id } });
+
+        // resolver return
+        const resolverResult = { ...dbResult };
+        console.log(resolverResult);
+        return resolverResult;
+    },
+    async projects(parent, args, context: ApolloContext, info) {
+        // resolver input
+
+        // resolver business logic
+        const dbResult = await context.typeormManager.getRepository(Project).find();
+
+        // resolver return
+        const resolverResult = [...dbResult];
+        return resolverResult;
+    },
+};
+
+export const projectMutation = {};

@@ -1,8 +1,8 @@
 type Query {
-    project(projectId: ID!): Project
+    project(id: ID!): Project!
     projects: [Project!]!
 
-    user: User!
+    user(id: ID!): User!
     users: [User!]!
 }
 
@@ -15,14 +15,24 @@ type Mutation {
     # deleteProject(projectId: ID!): Project!
 }
 
+type User {
+    id: ID!
+    firstname: String!
+    lastname: String!
+    email: String!
+    phoneNumber: String
+    verified: Boolean!
+    projects: [Project!]
+}
+
+
 type Project {
     id: ID!
     name: String!
-    description: String!
+    description: String
+    user: User!
+    # maturityModels: [MaturityModel!]!
+    created: String!
+    updated: String!
 }
 
-
-type User {
-    id: ID!
-    name: String!
-}

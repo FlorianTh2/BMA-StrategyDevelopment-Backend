@@ -1,19 +1,30 @@
 import { User } from "../entities/user";
 
-export function userQuery() {
-    return {
-        user(parent, args, context, info) {
-            // context.user.id;
-            return { id: 1, name: "testName" } as User;
-        },
-        users(parent, args, context, info) {
-            // context.user.id;
-            return [{ id: 1, name: "testName" }] as [User];
-        },
-    };
-}
+export const userQuery = {
+    async user(parent, args, context, info) {
+        // resolver input
+        const id = args.id;
 
-export function userMutation() {
+        // resolver business logic
+        const dbResult = await context.typeormManager.getRepository(User).findOne({ where: { id: id } });
+
+        // resolver return
+        const resolverResult = { ...dbResult };
+        return resolverResult;
+    },
+    async users(parent, args, context, info) {
+        // resolver input
+
+        // resolver business logic
+        const dbResult = await context.typeormManager.getRepository(User).find();
+
+        // resolver return
+        const resolverResult = [...dbResult];
+        return resolverResult;
+    },
+};
+
+export const userMutation = {
     //     // signup(name: String!, email: String!, password: String!): String
     //     async signup(_, args: SignupDto, ctx) {
     //         const { name, email, password } = args;
@@ -28,8 +39,8 @@ export function userMutation() {
     //             throw new UserInputError("E-Mail does already exists");
     //         }
     //
-    //         const user = await userDatasource.createUser({ name, email }, password);
-    //         const payload: JwtPayload = { id: user.id };
+    //         const project = await userDatasource.createUser({ name, email }, password);
+    //         const payload: JwtPayload = { id: project.id };
     //
     //         return jwt.sign(payload, process.env.JWT_SECRET, {
     //             expiresIn: process.env.JWT_EXPIRES_IN,
@@ -39,16 +50,16 @@ export function userMutation() {
     //     async login(_, args: SigninDto, ctx) {
     //         const { email, password } = args;
     //         const userDatasource: UserDatasource = ctx.dataSources.userDatasource;
-    //         const user = await userDatasource.getUserByEmail(email);
+    //         const project = await userDatasource.getUserByEmail(email);
     //
-    //         if (!user) {
+    //         if (!project) {
     //             throw new AuthenticationError("Wrong credentials");
     //         }
     //
-    //         const hash = await bcrypt.hash(password, user.passwordSalt);
+    //         const hash = await bcrypt.hash(password, project.passwordSalt);
     //
-    //         if (hash === user.passwordHash) {
-    //             const payload: JwtPayload = { id: user.id };
+    //         if (hash === project.passwordHash) {
+    //             const payload: JwtPayload = { id: project.id };
     //
     //             return jwt.sign(payload, process.env.JWT_SECRET, {
     //                 expiresIn: process.env.JWT_EXPIRES_IN,
@@ -57,4 +68,4 @@ export function userMutation() {
     //             throw new AuthenticationError("Wrong credentials");
     //         }
     //     }
-}
+};

@@ -30,6 +30,9 @@ export class Project {
     @ManyToOne(() => User, (user) => user.projects)
     user: User;
 
+    @Column({ nullable: true })
+    userId: number;
+
     @ManyToMany(() => MaturityModel)
     @JoinTable()
     maturityModels: MaturityModel[];

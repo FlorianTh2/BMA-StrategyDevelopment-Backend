@@ -1,0 +1,22 @@
+import DataLoader from "dataloader";
+import { User } from "../../entities/user";
+import { getRepository } from "typeorm";
+import { Project } from "../../entities/project";
+
+// export const createUserLoaderByProjectId = () => {
+//     return new DataLoader<number, User>(async (userIds) => {
+//         const userRepository = getRepository(User);
+//         const users: User[] = await userRepository.findByIds(userIds as number[]);
+//         return users;
+//     });
+// };
+
+export function createUserLoaderByProjectId() {
+    return new DataLoader<number, User>(async (projectIds) => {
+        console.log("hi3s");
+        const projectsWithAttachedUser = await getRepository(Project).findByIds(projectIds as number[], {
+            relations: ["user"],
+        });
+        return projectsWithAttachedUser.map((a) => a.user);
+    });
+}

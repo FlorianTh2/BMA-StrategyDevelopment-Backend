@@ -17,7 +17,7 @@ export async function install_typeorm() {
 
             // userRepository
             //     .save(userAdmin1)
-            //     .then((user) => console.log("Post has been saved: ", user))
+            //     .then((project) => console.log("Post has been saved: ", project))
             //     .catch((error) => console.log("Cannot save. Error: ", error));
         })
         .catch((error) => console.log(error));
