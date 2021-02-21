@@ -5,6 +5,9 @@ type Query {
     user(id: ID!): User!
     users: [User!]!
 
+    userPartialModel(id: ID!): UserPartialModel!
+    userPartialModels: [UserPartialModel!]!
+
 
 }
 
