@@ -1,6 +1,6 @@
 import * as Faker from "faker";
 import { define } from "typeorm-seeding";
-import { User } from "../entities/user";
+import { User } from "../../database/entities/user";
 
 define(User, (faker: typeof Faker) => {
     let userAdmin1 = new User();

@@ -1,7 +1,7 @@
 import DataLoader from "dataloader";
-import { User } from "../../entities/user";
+import { User } from "../../database/entities/user";
 import { getRepository } from "typeorm";
-import { Project } from "../../entities/project";
+import { Project } from "../../database/entities/project";
 
 // export const createUserLoaderByProjectId = () => {
 //     return new DataLoader<number, User>(async (userIds) => {

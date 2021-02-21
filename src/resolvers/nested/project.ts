@@ -1,5 +1,5 @@
 import { ApolloContext } from "../../types/apolloContext";
-import { User } from "../../entities/user";
+import { User } from "../../database/entities/user";
 
 // called with queries like: query{projects{user{id}}}
 export const Project = {

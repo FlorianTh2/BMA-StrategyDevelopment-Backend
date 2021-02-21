@@ -1,6 +1,6 @@
 import * as Faker from "faker";
 import { define } from "typeorm-seeding";
-import { Project } from "../entities/project";
+import { Project } from "../../database/entities/project";
 
 define(Project, (faker: typeof Faker) => {
     let project = new Project();

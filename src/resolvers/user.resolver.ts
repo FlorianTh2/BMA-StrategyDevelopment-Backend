@@ -1,4 +1,4 @@
-import { User } from "../entities/user";
+import { User } from "../database/entities/user";
 
 export const userQuery = {
     async user(parent, args, context, info) {

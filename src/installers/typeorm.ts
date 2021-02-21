@@ -1,6 +1,6 @@
 import { createConnection } from "typeorm";
 import { ConnectionOptions } from "typeorm";
-import { User } from "../entities/user";
+import { User } from "../database/entities/user";
 
 export async function install_typeorm() {
     // npm run typeorm migration:generate -- -n migrationName

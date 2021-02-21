@@ -1,5 +1,5 @@
-import { User as UserEntity } from "../../entities/user";
-import { Project } from "../../entities/project";
+import { User as UserEntity } from "../../database/entities/user";
+import { Project } from "../../database/entities/project";
 import { ApolloContext } from "../../types/apolloContext";
 
 // called with queries like: query{user{projects{id}}}

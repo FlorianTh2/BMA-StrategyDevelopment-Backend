@@ -1,4 +1,4 @@
-import { Project } from "../entities/project";
+import { Project } from "../database/entities/project";
 import { ApolloContext } from "../types/apolloContext";
 import { getRepository } from "typeorm";
 

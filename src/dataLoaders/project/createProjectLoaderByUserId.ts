@@ -1,7 +1,7 @@
 import DataLoader from "dataloader";
 import { getRepository } from "typeorm";
-import { Project } from "../../entities/project";
-import { User } from "../../entities/user";
+import { Project } from "../../database/entities/project";
+import { User } from "../../database/entities/user";
 
 // naming based on output (what it loads), not on input
 export function createProjectLoaderByUserId() {

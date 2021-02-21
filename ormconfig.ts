@@ -1,5 +1,5 @@
-import { Project } from "./src/entities/project";
-import { User } from "./src/entities/user";
+import { Project } from "./src/database/entities/project";
+import { User } from "./src/database/entities/user";
 
 export default {
     type: "postgres",
@@ -15,12 +15,12 @@ export default {
     reconnectTries: Number.MAX_VALUE,
     reconnectInterval: 2000,
 
-    entities: ["./src/entities/*"],
-    migrations: ["src/migrations/*"],
-    seeds: ["src/seeds/**/*{.ts,.js}"],
-    factories: ["src/factories/**/*{.ts,.js}"],
+    entities: ["./src/database/entities/*"],
+    migrations: ["src/database/migrations/*"],
+    seeds: ["src/seeding/seeds/**/*{.ts,.js}"],
+    factories: ["src/seeding/factories/**/*{.ts,.js}"],
     cli: {
-        entitiesDir: "src/entities",
-        migrationsDir: "src/migrations",
+        entitiesDir: "src/database/entities",
+        migrationsDir: "src/database/migrations",
     },
 };

@@ -1,12 +1,12 @@
 import { Factory, Seeder } from "typeorm-seeding";
 import { Connection } from "typeorm";
-import { User } from "../entities/user";
-import { Project } from "../entities/project";
-import { MaturityModel } from "../entities/maturityModel";
-import { PartialModel } from "../entities/partialModel";
-import { EvaluationMetric } from "../entities/evaluationMetric";
-import { UserPartialModel } from "../entities/userPartialModel";
-import { UserEvaluationMetric } from "../entities/userEvaluationMetric";
+import { User } from "../../database/entities/user";
+import { Project } from "../../database/entities/project";
+import { MaturityModel } from "../../database/entities/maturityModel";
+import { PartialModel } from "../../database/entities/partialModel";
+import { EvaluationMetric } from "../../database/entities/evaluationMetric";
+import { UserPartialModel } from "../../database/entities/userPartialModel";
+import { UserEvaluationMetric } from "../../database/entities/userEvaluationMetric";
 
 export default class CreateBasicSeed implements Seeder {
     public async run(factory: Factory, connection: Connection): Promise<any> {
