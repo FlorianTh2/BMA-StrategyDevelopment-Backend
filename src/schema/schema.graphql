@@ -10,6 +10,15 @@ type Query {
 
     userPartialModel(id: ID!): UserPartialModel!
     userPartialModels: [UserPartialModel!]!
+
+    userEvaluationMetric(id: ID!): UserEvaluationMetric!
+    userEvaluationMetrics: [UserEvaluationMetric!]!
+
+    partialModel(id: ID!): PartialModel!
+    partialModels: [PartialModel!]!
+
+    evaluationMetric(id: ID!): EvaluationMetric!
+    evaluationMetrics: [EvaluationMetric!]!
 }
 
 type Mutation {
@@ -20,6 +29,8 @@ type Mutation {
     # updateProject(projectId: ID!, data: ProjectUpdateInput!): Project!
     # deleteProject(projectId: ID!): Project!
 }
+
+# alle nested funktionieren nicht außer user-project und project-user
 
 type User {
     id: ID!
@@ -37,21 +48,21 @@ type Project {
     name: String!
     description: String
     user: User!
-    # maturityModels: [MaturityModel!]!
+    maturityModels: [MaturityModel!]!
     created: String!
     updated: String!
 }
 
 type MaturityModel {
     id: ID!
-    name: string
-    maturityLevel: number;
+    name: String
+    maturityLevel: Float
 
     userPartialModels: [UserPartialModel!]!
 
-    created: Date!
+    created: String!
     creator: String!
-    updated: Date!
+    updated: String!
     updater: String!
 }
 
@@ -65,8 +76,52 @@ type UserPartialModel {
     subUserPartialModels: [UserPartialModel]!
     superUserPartialModel: UserPartialModel
 
-    created: Date!
+    created: String!
     creator: String!
-    updated: Date!
+    updated: String!
+    updater: String!
+}
+
+type UserEvaluationMetric {
+    id: ID!
+
+    valueEvaluationMetric: Float!
+    userPartialModel: UserPartialModel!
+    evaluationMetric: EvaluationMetric!
+
+    created: String!
+    creator: String!
+    updated: String!
+    updater: String!
+}
+
+type PartialModel {
+    id: ID!
+    name: String!
+    description: String
+    weight: Float
+
+    evaluationMetrics: [EvaluationMetric!]!
+    subPartialModels: [PartialModel!]
+    superPartialModel: [PartialModel!]
+
+
+    created: String!
+    creator: String!
+    updated: String!
+    updater: String!
+}
+
+type EvaluationMetric {
+    id: ID!
+    name: String!
+    description: String
+    weight: Float
+
+    partialModel: [PartialModel!]!
+
+    created: String!
+    creator: String!
+    updated: String!
     updater: String!
 }
