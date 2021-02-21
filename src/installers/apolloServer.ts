@@ -3,23 +3,13 @@ import { resolvers } from "../resolvers";
 import { readFileSync } from "fs";
 import { createUserLoaderByProjectId } from "../dataLoaders/user/createUserLoaderByProjectId";
 import { getManager } from "typeorm";
-import { makeExecutableSchema } from "graphql-tools";
-import { importSchema } from "graphql-import";
 import { createProjectLoaderByUserId } from "../dataLoaders/project/createProjectLoaderByUserId";
-import { ApolloContext } from "../types/apolloContext";
 import { Dataloaders } from "../types/dataloaders";
 
 export async function install_apolloServer() {
-    const typedeeefs = importSchema("src/schema/schema.graphql");
-    const schema1 = makeExecutableSchema({
-        typeDefs: typedeeefs,
-        resolvers: resolvers,
-    });
-
     const app: ApolloServer = new ApolloServer({
-        // typeDefs: readFileSync("./src/schema/schema.graphql").toString("utf-8"),
-        // resolvers: resolvers,
-        schema: schema1,
+        typeDefs: readFileSync("./src/schema/schema.graphql").toString("utf-8"),
+        resolvers: resolvers,
         playground: true,
         introspection: true,
         context: ({ req, res }) => {
