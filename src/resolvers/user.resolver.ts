@@ -71,9 +71,7 @@ export const userMutation = {
             lastname: userRegistrationRequest.lastname,
         };
 
-        // problem: returns undefined
-        const createdUser = await context.typeormManager.getRepository(User).create(user);
-
+        const createdUser = await context.typeormManager.getRepository(User).save(user);
         return createToken(createdUser?.id.toString());
     },
 };
