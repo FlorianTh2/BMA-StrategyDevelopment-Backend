@@ -3,6 +3,7 @@ import { resolvers } from "../resolvers";
 import { readFileSync } from "fs";
 import { getManager } from "typeorm";
 import { createDataloaders } from "../dataLoaders";
+import { verifyToken } from "../utils/authorization/authorization";
 
 // this separation from only the presentation/view/interface layer (=only apollo-server-resolver layer) to
 //  a interface layer + business-logic layer is not further continued since in that case we had to introduce
@@ -30,6 +31,7 @@ export async function install_apolloServer() {
             return {
                 req,
                 res,
+                userId: verifyToken(req?.headers?.authorization),
                 dataLoaders: createDataloaders(),
                 typeormManager: getManager(),
             };

@@ -1,4 +1,11 @@
 import { User } from "../database/entities/user";
+import { UserLoginRequest } from "../contracts/requests/userLoginRequest";
+import { ApolloContext } from "../types/apolloContext";
+import { AuthenticationError, UserInputError } from "apollo-server-errors";
+import { generateSHA512Hash } from "../utils/authorization/cryptography";
+import { createToken } from "../utils/authorization/authorization";
+import { UserRegistrationRequest } from "../contracts/requests/userRegistrationRequest";
+import { JwtPayload } from "../types/jwtPayload";
 
 export const userQuery = {
     async user(parent, args, context, info) {
@@ -25,47 +32,48 @@ export const userQuery = {
 };
 
 export const userMutation = {
-    //     // signup(name: String!, email: String!, password: String!): String
-    //     async signup(_, args: SignupDto, ctx) {
-    //         const { name, email, password } = args;
-    //         const userDatasource: UserDatasource = ctx.dataSources.userDatasource;
-    //         const existentUser = await userDatasource.getUserByEmail(email);
-    //
-    //         if (password.length < 8) {
-    //             throw new UserInputError("Password must at least 8 characters long");
-    //         }
-    //
-    //         if (existentUser) {
-    //             throw new UserInputError("E-Mail does already exists");
-    //         }
-    //
-    //         const project = await userDatasource.createUser({ name, email }, password);
-    //         const payload: JwtPayload = { id: project.id };
-    //
-    //         return jwt.sign(payload, process.env.JWT_SECRET, {
-    //             expiresIn: process.env.JWT_EXPIRES_IN,
-    //         });
-    //     },
-    // // login(email: String!, password: String!): String
-    //     async login(_, args: SigninDto, ctx) {
-    //         const { email, password } = args;
-    //         const userDatasource: UserDatasource = ctx.dataSources.userDatasource;
-    //         const project = await userDatasource.getUserByEmail(email);
-    //
-    //         if (!project) {
-    //             throw new AuthenticationError("Wrong credentials");
-    //         }
-    //
-    //         const hash = await bcrypt.hash(password, project.passwordSalt);
-    //
-    //         if (hash === project.passwordHash) {
-    //             const payload: JwtPayload = { id: project.id };
-    //
-    //             return jwt.sign(payload, process.env.JWT_SECRET, {
-    //                 expiresIn: process.env.JWT_EXPIRES_IN,
-    //             });
-    //         } else {
-    //             throw new AuthenticationError("Wrong credentials");
-    //         }
-    //     }
+    async login(parent, args, context: ApolloContext, info) {
+        const userLoginRequest: UserLoginRequest = args.userLoginRequest;
+        userLoginRequest.email = userLoginRequest.email.toLocaleLowerCase();
+
+        console.log(userLoginRequest.email);
+
+        const dbResult = await context.typeormManager
+            .getRepository(User)
+            .findOne({ where: { email: userLoginRequest.email } });
+        if (!dbResult) throw new AuthenticationError("User does not exist");
+
+        const user: User = dbResult;
+        if (user.password !== generateSHA512Hash(userLoginRequest.password))
+            throw new AuthenticationError("Wrong credentials");
+
+        return createToken(user.id.toString());
+    },
+
+    async register(parent, args, context: ApolloContext, info) {
+        const userRegistrationRequest: UserRegistrationRequest = args.userRegistrationRequest;
+
+        userRegistrationRequest.email = userRegistrationRequest.email.toLocaleLowerCase();
+        if (userRegistrationRequest.password.length < 5)
+            throw new UserInputError("Password has to be at least 8 characters long");
+
+        if (
+            await context.typeormManager
+                .getRepository(User)
+                .findOne({ where: { email: userRegistrationRequest.email } })
+        )
+            throw new UserInputError("E-Mail does already exists");
+
+        let user: Partial<User> = {
+            email: userRegistrationRequest.email,
+            password: generateSHA512Hash(userRegistrationRequest.password),
+            firstname: userRegistrationRequest.firstname,
+            lastname: userRegistrationRequest.lastname,
+        };
+
+        // problem: returns undefined
+        const createdUser = await context.typeormManager.getRepository(User).create(user);
+
+        return createToken(createdUser?.id.toString());
+    },
 };

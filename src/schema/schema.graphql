@@ -22,15 +22,26 @@ type Query {
 }
 
 type Mutation {
-    login(email: String!, password: String!): String
-    signup(name: String!, email: String!, password: String!): String
+    login(userLoginRequest: UserLoginRequest!): String
+    register(userRegistrationRequest: UserRegistrationRequest!): String
 
     # createProject(name: String): Project!
     # updateProject(projectId: ID!, data: ProjectUpdateInput!): Project!
     # deleteProject(projectId: ID!): Project!
 }
 
-# alle nested funktionieren nicht außer user-project und project-user
+input UserLoginRequest{
+    email: String!
+    password: String!
+}
+
+input UserRegistrationRequest {
+    email: String!
+    password: String!
+    firstname: String!
+    lastname: String!
+    phoneNumber: String
+}
 
 type User {
     id: ID!

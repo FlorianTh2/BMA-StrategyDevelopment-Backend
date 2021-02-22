@@ -1,5 +1,5 @@
 import { projectMutation, projectQuery } from "./project.resolver";
-import { userQuery } from "./user.resolver";
+import { userMutation, userQuery } from "./user.resolver";
 import { User } from "./nested/user";
 import { Project } from "./nested/project";
 import { userPartialModelQuery } from "./userPartialModel.resolver";
@@ -33,7 +33,9 @@ const NestedFields = {
     UserEvaluationMetric,
 };
 
-const Mutation = {};
+const Mutation = {
+    ...userMutation,
+};
 
 export const resolvers = {
     Query: Query,
