@@ -24,7 +24,7 @@ export class UserEvaluationMetric {
     @Column("float")
     valueEvaluationMetric: number;
 
-    @ManyToOne(() => UserPartialModel, (userPartialModel) => userPartialModel.userEvaluationAreas)
+    @ManyToOne(() => UserPartialModel, (userPartialModel) => userPartialModel.userEvaluationMetrics)
     userPartialModel: UserPartialModel;
 
     @ManyToOne(() => EvaluationMetric, (evaluationArea) => evaluationArea.userEvaluationAreas)

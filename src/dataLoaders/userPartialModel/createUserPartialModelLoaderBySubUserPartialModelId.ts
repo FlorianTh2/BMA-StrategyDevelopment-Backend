@@ -6,14 +6,14 @@ import { MaturityModel } from "../../database/entities/maturityModel";
 import { UserPartialModel } from "../../database/entities/userPartialModel";
 
 // naming based on output (what it loads), not on input
-export function createUserPartialModelLoaderByUserPartialModelId() {
+export function createUserPartialModelLoaderBySubUserPartialModelId() {
     return new DataLoader<number, UserPartialModel>(async (userPartialModelIds) => {
-        const maturityModelsWithAttachedUserPartialModels = await getRepository(UserPartialModel).findByIds(
+        const maturityModelsWithAttachedSuperUserPartialModels = await getRepository(UserPartialModel).findByIds(
             userPartialModelIds as number[],
             {
                 relations: ["superUserPartialModel"],
             },
         );
-        return maturityModelsWithAttachedUserPartialModels.map((a) => a.superUserPartialModel);
+        return maturityModelsWithAttachedSuperUserPartialModels.map((a) => a.superUserPartialModel);
     });
 }

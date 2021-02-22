@@ -29,8 +29,8 @@ export class UserPartialModel {
     @ManyToOne(() => PartialModel, (partialModel) => partialModel.userPartialModels)
     partialModel: PartialModel;
 
-    @OneToMany(() => UserEvaluationMetric, (userEvaluationArea) => userEvaluationArea.userPartialModel)
-    userEvaluationAreas: UserEvaluationMetric[];
+    @OneToMany(() => UserEvaluationMetric, (userEvaluationMetric) => userEvaluationMetric.userPartialModel)
+    userEvaluationMetrics: UserEvaluationMetric[];
 
     @ManyToOne(() => MaturityModel, (maturityModel) => maturityModel.userPartialModels)
     maturityModel: MaturityModel;
@@ -40,6 +40,9 @@ export class UserPartialModel {
 
     @ManyToOne(() => UserPartialModel, (userPartialModel) => userPartialModel.subUserPartialModels)
     superUserPartialModel: UserPartialModel;
+
+    @Column({ nullable: true })
+    superUserPartialModelId: number;
 
     @CreateDateColumn()
     created: Date;

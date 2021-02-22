@@ -4,7 +4,16 @@ import { createProjectLoaderByMaturityModelId } from "../dataLoaders/project/cre
 import { createUserPartialModelLoaderByMaturityModelId } from "../dataLoaders/userPartialModel/createUserPartialModelLoaderByMaturityModelId";
 import { createMaturityModelLoaderByUserPartialModelId } from "../dataLoaders/maturityModel/createMaturityModelLoaderByUserPartialModelId";
 import { createMaturityModelLoaderByProjectId } from "../dataLoaders/maturityModel/createMaturityModelLoaderByProjectId";
-import { createUserPartialModelLoaderByUserPartialModelId } from "../dataLoaders/userPartialModel/createUserPartialModelLoaderByUserPartialModelId";
+import { createUserPartialModelLoaderBySuperUserPartialModelId } from "../dataLoaders/userPartialModel/createUserPartialModelLoaderBySuperUserPartialModelId";
+import { createUserPartialModelLoaderBySubUserPartialModelId } from "../dataLoaders/userPartialModel/createUserPartialModelLoaderBySubUserPartialModelId";
+import { createUserEvaluationMetricLoaderByUserPartialModelId } from "../dataLoaders/userEvaluationMetric/createUserEvaluationMetricLoaderByUserPartialModelId";
+import { createPartialModelLoaderBySuperPartialModelId } from "../dataLoaders/partialModel/createPartialModelLoaderBySuperUserPartialModelId";
+import { createPartialModelLoaderBySubPartialModelId } from "../dataLoaders/partialModel/createPartialModelLoaderBySubPartialModelId";
+import { createPartialModelLoaderByUserPartialModelId } from "../dataLoaders/partialModel/createPartialModelLoaderByUserPartialModelId";
+import { createEvaluationMetricLoaderByPartialModelId } from "../dataLoaders/evaluationMetric/createEvaluationMetricLoaderByPartialModelId";
+import { createPartialModelLoaderByEvaluationMetricId } from "../dataLoaders/partialModel/createPartialModelLoaderByEvaluationMetricId";
+import { createUserPartialModelLoaderByUserEvaluationMetricId } from "../dataLoaders/userPartialModel/createUserPartialModelLoaderByUserEvaluationMetricId";
+import { createEvaluationMetricLoaderByUserEvaluationMetricId } from "../dataLoaders/evaluationMetric/createEvaluationMetricLoaderByUserEvaluationMetricId";
 
 export interface Dataloaders {
     project: {
@@ -20,6 +29,21 @@ export interface Dataloaders {
     };
     userPartialModel: {
         loaderByMaturityModelId: ReturnType<typeof createUserPartialModelLoaderByMaturityModelId>;
-        loaderByUserPartialModelId: ReturnType<typeof createUserPartialModelLoaderByUserPartialModelId>;
+        loaderBySubUserPartialModelId: ReturnType<typeof createUserPartialModelLoaderBySubUserPartialModelId>;
+        loaderBySuperUserPartialModelId: ReturnType<typeof createUserPartialModelLoaderBySuperUserPartialModelId>;
+        loaderByUserEvaluationMetric: ReturnType<typeof createUserPartialModelLoaderByUserEvaluationMetricId>;
+    };
+    userEvaluationMetric: {
+        loaderByUserPartialModelId: ReturnType<typeof createUserEvaluationMetricLoaderByUserPartialModelId>;
+    };
+    partialModel: {
+        loaderByUserPartialModelId: ReturnType<typeof createPartialModelLoaderByUserPartialModelId>;
+        loaderBySubPartialModelId: ReturnType<typeof createPartialModelLoaderBySubPartialModelId>;
+        loaderBySuperPartialModelId: ReturnType<typeof createPartialModelLoaderBySuperPartialModelId>;
+        loaderByEvaluationMetricId: ReturnType<typeof createPartialModelLoaderByEvaluationMetricId>;
+    };
+    evaluationMetric: {
+        loaderByPartialModelId: ReturnType<typeof createEvaluationMetricLoaderByPartialModelId>;
+        loaderByUserEvaluationMetricId: ReturnType<typeof createEvaluationMetricLoaderByUserEvaluationMetricId>;
     };
 }

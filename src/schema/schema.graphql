@@ -74,7 +74,7 @@ type UserPartialModel {
     maturityModel: MaturityModel!
     superUserPartialModel: UserPartialModel
     subUserPartialModels: [UserPartialModel]!
-    userEvaluationAreas: [UserEvaluationMetric!]!
+    userEvaluationMetrics: [UserEvaluationMetric!]!
     partialModel: PartialModel!
 
     created: String!
@@ -85,8 +85,8 @@ type UserPartialModel {
 
 type UserEvaluationMetric {
     id: ID!
-
     valueEvaluationMetric: Float!
+
     userPartialModel: UserPartialModel!
     evaluationMetric: EvaluationMetric!
 
@@ -104,7 +104,7 @@ type PartialModel {
 
     evaluationMetrics: [EvaluationMetric!]!
     subPartialModels: [PartialModel!]
-    superPartialModel: [PartialModel!]
+    superPartialModel: PartialModel
 
 
     created: String!
@@ -119,7 +119,7 @@ type EvaluationMetric {
     description: String
     weight: Float
 
-    partialModel: [PartialModel!]!
+    partialModel: PartialModel
 
     created: String!
     creator: String!
