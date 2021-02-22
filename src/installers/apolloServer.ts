@@ -4,6 +4,9 @@ import { readFileSync } from "fs";
 import { getManager } from "typeorm";
 import { createDataloaders } from "../dataLoaders";
 import { verifyToken } from "../utils/authorization/authorization";
+import { makeExecutableSchema } from "graphql-tools";
+import { applyMiddleware } from "graphql-middleware";
+import { permissions } from "../shield/shield";
 
 // this separation from only the presentation/view/interface layer (=only apollo-server-resolver layer) to
 //  a interface layer + business-logic layer is not further continued since in that case we had to introduce
@@ -23,8 +26,13 @@ import { verifyToken } from "../utils/authorization/authorization";
 
 export async function install_apolloServer() {
     const app: ApolloServer = new ApolloServer({
-        typeDefs: readFileSync("./src/schema/schema.graphql").toString("utf-8"),
-        resolvers: resolvers,
+        schema: applyMiddleware(
+            makeExecutableSchema({
+                typeDefs: readFileSync("./src/schema/schema.graphql").toString("utf-8"),
+                resolvers: resolvers,
+            }),
+            permissions,
+        ),
         playground: true,
         introspection: true,
         context: ({ req, res }) => {

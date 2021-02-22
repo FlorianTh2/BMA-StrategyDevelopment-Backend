@@ -7,6 +7,7 @@ import { createDataloaders } from "../dataLoaders";
 export interface ApolloContext {
     req: Request;
     res: Response;
+    userId: string;
     dataLoaders: ReturnType<typeof createDataloaders>;
     typeormManager: ReturnType<typeof getManager>;
 }
