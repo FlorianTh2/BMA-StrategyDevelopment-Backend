@@ -4,11 +4,10 @@ import { ApolloContext } from "../types/apolloContext";
 import { User } from "../database/entities/user";
 
 const isAuthenticated = rule({ cache: "contextual" })(async (parent, args, context: ApolloContext, info) => {
-    const tmp =
+    return (
         context.userId !== undefined &&
-        (await context.typeormManager.getRepository(User).findOne(context.userId)) !== undefined;
-    console.log(tmp);
-    return tmp;
+        (await context.typeormManager.getRepository(User).findOne(context.userId)) !== undefined
+    );
 });
 
 const isAdmin = rule({ cache: "contextual" })(async (parent, args, context: ApolloContext, info) => {

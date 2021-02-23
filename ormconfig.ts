@@ -10,7 +10,7 @@ export default {
     database: process.env.TYPEORM_DATABASE_Name || "node_project",
 
     synchronize: false,
-    logging: true,
+    logging: false,
     autoReconnect: true,
     reconnectTries: Number.MAX_VALUE,
     reconnectInterval: 2000,

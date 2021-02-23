@@ -1,43 +1,53 @@
 # BusinessModelDigitalHealthBackend_Algorithm2
 
-## ##Learned
+## Learned
 
 ## Prerequisites
-
---
+- yarn
+- postgres-db with the credentials defined like in src/ormconfig.ts
 
 ## Getting Started
 
- - Build project
+- Install dependencies
+```
+    $ yarn install
+```
+- Build project
 ```
     $ yarn build
 ```
 
- - Start project
+- Start project
 ```
     $ yarn start
 ```
 
 ## Important commands
 
- - Transpile to .js on file change
+- Start nodemon
 ```
-    $ yarn watch
-```
-
- - Watch for .js changes
-```
-    $ yarn dev
+    $ yarn nodemon
 ```
 
- - Generate new migration
+- Start the transpiles project for production
 ```
-    $ yarn typeorm:generate -n "MigrationName"
+    $ yarn start:prod
 ```
 
- - Run all migrations
+- Lint the project
 ```
-    $ yarn typeorm:run
+    $ yarn lint
+```
+
+- Create and run db-migration
+```
+    $ yarn typeorm migration:generate -- -n "database init"
+    $ typeorm migration:run
+```
+
+- Seed project from scratch (delete data + drop db-schema + run migrations + seed)
+```
+    $ yarn db:setup
 ```
 
 ## TL;DR
