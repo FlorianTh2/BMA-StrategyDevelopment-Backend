@@ -4,10 +4,15 @@ import { ApolloContext } from "../types/apolloContext";
 import { User } from "../database/entities/user";
 
 const isAuthenticated = rule({ cache: "contextual" })(async (parent, args, context: ApolloContext, info) => {
-    return (
+    const tmp =
         context.userId !== undefined &&
-        (await context.typeormManager.getRepository(User).findOne(context.userId)) !== undefined
-    );
+        (await context.typeormManager.getRepository(User).findOne(context.userId)) !== undefined;
+    console.log(tmp);
+    return tmp;
+});
+
+const isAdmin = rule({ cache: "contextual" })(async (parent, args, context: ApolloContext, info) => {
+    return false;
 });
 
 // problem: you should only be capable of getting your own stuff
@@ -33,16 +38,28 @@ export const permissions = shield(
             partialModels: allow,
             evaluationMetric: allow,
             evaluationMetrics: allow,
+            projectOfUser: isAuthenticated,
+            projectsOfUser: isAuthenticated,
+            profileOfUser: isAuthenticated,
+            maturityModelOfUser: isAuthenticated,
+            maturityModelsOfUser: isAuthenticated,
         },
         Mutation: {
             // "*": deny
             login: allow,
             register: allow,
         },
+        Project: allow,
+        User: allow,
+        MaturityModel: allow,
+        UserPartialModel: allow,
+        UserEvaluationMetric: allow,
+        PartialModel: allow,
+        EvaluationMetric: allow,
     },
     {
         allowExternalErrors: true,
-        fallbackRule: isAuthenticated,
+        fallbackRule: isAdmin,
         fallbackError: new ForbiddenError("No access allowed!"),
     },
 );

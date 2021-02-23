@@ -29,6 +29,18 @@ export const userQuery = {
         const resolverResult = [...dbResult];
         return resolverResult;
     },
+
+    async profileOfUser(parent, args, context: ApolloContext, info) {
+        // resolver input
+        const id = args.id;
+
+        // resolver business logic
+        const dbResult = await context.typeormManager.getRepository(User).findOne({ where: { id: context.userId } });
+
+        // resolver return
+        const resolverResult = { ...dbResult };
+        return resolverResult;
+    },
 };
 
 export const userMutation = {

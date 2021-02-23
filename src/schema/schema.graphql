@@ -1,23 +1,28 @@
 type Query {
-    project(id: ID!): Project!
-    projects: [Project!]!
+    project(id: ID!): Project
+    projects: [Project!]
+    projectOfUser(id: ID!): Project
+    projectsOfUser: [Project!]
 
-    user(id: ID!): User!
-    users: [User!]!
+    user(id: ID!): User
+    users: [User!]
+    profileOfUser: User!
 
-    maturityModel(id: ID!): MaturityModel!
-    maturityModels: [MaturityModel!]!
+    maturityModel(id: ID!): MaturityModel
+    maturityModels: [MaturityModel!]
+    maturityModelOfUser(id: ID!): MaturityModel
+    maturityModelsOfUser: [MaturityModel!]
 
-    userPartialModel(id: ID!): UserPartialModel!
-    userPartialModels: [UserPartialModel!]!
+    userPartialModel(id: ID!): UserPartialModel
+    userPartialModels: [UserPartialModel!]
 
-    userEvaluationMetric(id: ID!): UserEvaluationMetric!
-    userEvaluationMetrics: [UserEvaluationMetric!]!
+    userEvaluationMetric(id: ID!): UserEvaluationMetric
+    userEvaluationMetrics: [UserEvaluationMetric!]
 
-    partialModel(id: ID!): PartialModel!
+    partialModel(id: ID!): PartialModel
     partialModels: [PartialModel!]!
 
-    evaluationMetric(id: ID!): EvaluationMetric!
+    evaluationMetric(id: ID!): EvaluationMetric
     evaluationMetrics: [EvaluationMetric!]!
 }
 
