@@ -1,7 +1,4 @@
-import { Project } from "../database/entities/project";
 import { ApolloContext } from "../types/apolloContext";
-import { getRepository } from "typeorm";
-import { UserPartialModel } from "../database/entities/userPartialModel";
 import { UserEvaluationMetric } from "../database/entities/userEvaluationMetric";
 
 export const userEvaluationMetricQuery = {

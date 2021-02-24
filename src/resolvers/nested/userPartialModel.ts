@@ -1,5 +1,4 @@
 import { ApolloContext } from "../../types/apolloContext";
-import { Project } from "../../database/entities/project";
 import { UserMaturityModel } from "../../database/entities/userMaturityModel";
 import { UserPartialModel as UserPartialModelEntity } from "../../database/entities/userPartialModel";
 import { UserEvaluationMetric } from "../../database/entities/userEvaluationMetric";

@@ -6,10 +6,12 @@ import { UserPartialModel } from "../../database/entities/userPartialModel";
 export const UserMaturityModel = {
     projects: async (parent, _args, context: ApolloContext, info) => {
         // resolver input
-        const maturityModelId = parent.id;
+        const userMaturityModelId = parent.id;
 
         // resolver business logic
-        const dbResult: Project[] = await context.dataLoaders.project.loaderByMaturityModelId.load(maturityModelId);
+        const dbResult: Project[] = await context.dataLoaders.project.loaderByUserMaturityModelId.load(
+            userMaturityModelId,
+        );
 
         // resolver return
         const resolverResult = [...dbResult];
@@ -18,11 +20,11 @@ export const UserMaturityModel = {
 
     userPartialModels: async (parent, _args, context: ApolloContext, info) => {
         // resolver input
-        const maturityModelId = parent.id;
+        const userMaturityModelId = parent.id;
 
         // resolver business logic
-        const dbResult: UserPartialModel[] = await context.dataLoaders.userPartialModel.loaderByMaturityModelId.load(
-            maturityModelId,
+        const dbResult: UserPartialModel[] = await context.dataLoaders.userPartialModel.loaderByUserMaturityModelId.load(
+            userMaturityModelId,
         );
 
         // resolver return

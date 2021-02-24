@@ -26,9 +26,6 @@ export class MaturityModel {
     @Column("int")
     version: number;
 
-    @ManyToMany(() => Project, (project) => project.userMaturityModels)
-    projects: Project[];
-
     @OneToMany(() => PartialModel, (partialModel) => partialModel.maturityModel)
     partialModels: PartialModel[];
 

@@ -1,7 +1,4 @@
-import { createUserLoaderByProjectId } from "../dataLoaders/user/createUserLoaderByProjectId";
 import { getManager } from "typeorm";
-import { createProjectLoaderByUserId } from "../dataLoaders/project/createProjectLoaderByUserId";
-import { Dataloaders } from "./dataloaders";
 import { createDataloaders } from "../dataLoaders";
 import { User } from "../database/entities/user";
 

@@ -5,6 +5,6 @@ import { UserMaturityModel } from "../../database/entities/userMaturityModel";
 
 define(UserMaturityModel, (faker: typeof Faker) => {
     let mm = new UserMaturityModel();
-    mm.name = faker.random.word() + "MaturityModel";
+    mm.name = faker.random.word() + "UserMaturityModel";
     return mm;
 });

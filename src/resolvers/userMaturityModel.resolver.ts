@@ -5,7 +5,7 @@ import { UserPartialModel } from "../database/entities/userPartialModel";
 import { UserMaturityModel } from "../database/entities/userMaturityModel";
 import { AuthenticationError } from "apollo-server-errors";
 
-export const maturityModelQuery = {
+export const userMaturityModelQuery = {
     async userMaturityModel(parent, args, context: ApolloContext, info) {
         // resolver input
         const id = args.id;

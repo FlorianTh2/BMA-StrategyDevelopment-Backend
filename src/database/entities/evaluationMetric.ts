@@ -10,11 +10,7 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
 } from "typeorm";
-import { Project } from "./project";
-import { User } from "./user";
-import { UserMaturityModel } from "./userMaturityModel";
 import { UserEvaluationMetric } from "./userEvaluationMetric";
-import { UserPartialModel } from "./userPartialModel";
 import { PartialModel } from "./partialModel";
 
 @Entity()

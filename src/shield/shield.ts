@@ -39,6 +39,7 @@ export const permissions = shield(
             profileOfUser: isAuthenticated,
             userMaturityModelOfUser: isAuthenticated,
             userMaturityModelsOfUser: isAuthenticated,
+            maturityModel: allow,
         },
         Mutation: {
             // "*": deny
@@ -52,6 +53,7 @@ export const permissions = shield(
         UserEvaluationMetric: allow,
         PartialModel: allow,
         EvaluationMetric: allow,
+        MaturityModel: allow,
     },
     {
         allowExternalErrors: true,

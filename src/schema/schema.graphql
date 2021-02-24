@@ -24,6 +24,8 @@ type Query {
 
     evaluationMetric(id: ID!): EvaluationMetric
     evaluationMetrics: [EvaluationMetric!]!
+
+    maturityModel(id: ID!): MaturityModel!
 }
 
 type Mutation {
@@ -137,6 +139,17 @@ type EvaluationMetric {
 
     partialModel: PartialModel
 
+    created: String!
+    creator: String!
+    updated: String!
+    updater: String!
+}
+
+type MaturityModel {
+    id: ID!
+    name: String!
+    version: Int!
+    partialModels: [PartialModel!]!
     created: String!
     creator: String!
     updated: String!

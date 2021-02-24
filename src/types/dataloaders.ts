@@ -14,11 +14,12 @@ import { createEvaluationMetricLoaderByPartialModelId } from "../dataLoaders/eva
 import { createPartialModelLoaderByEvaluationMetricId } from "../dataLoaders/partialModel/createPartialModelLoaderByEvaluationMetricId";
 import { createUserPartialModelLoaderByUserEvaluationMetricId } from "../dataLoaders/userPartialModel/createUserPartialModelLoaderByUserEvaluationMetricId";
 import { createEvaluationMetricLoaderByUserEvaluationMetricId } from "../dataLoaders/evaluationMetric/createEvaluationMetricLoaderByUserEvaluationMetricId";
+import { createPartialModelLoaderByMaturityModelId } from "../dataLoaders/partialModel/createPartialModelLoaderByMaturityModelId";
 
 export interface Dataloaders {
     project: {
         loaderByUserId: ReturnType<typeof createProjectLoaderByUserId>;
-        loaderByMaturityModelId: ReturnType<typeof createProjectLoaderByUserMaturityModelId>;
+        loaderByUserMaturityModelId: ReturnType<typeof createProjectLoaderByUserMaturityModelId>;
     };
     user: {
         loaderByProjectId: ReturnType<typeof createUserLoaderByProjectId>;
@@ -28,7 +29,7 @@ export interface Dataloaders {
         loaderByProjectId: ReturnType<typeof createUserMaturityModelLoaderByProjectId>;
     };
     userPartialModel: {
-        loaderByMaturityModelId: ReturnType<typeof createUserPartialModelLoaderByUserMaturityModelId>;
+        loaderByUserMaturityModelId: ReturnType<typeof createUserPartialModelLoaderByUserMaturityModelId>;
         loaderBySubUserPartialModelId: ReturnType<typeof createUserPartialModelLoaderBySubUserPartialModelId>;
         loaderBySuperUserPartialModelId: ReturnType<typeof createUserPartialModelLoaderBySuperUserPartialModelId>;
         loaderByUserEvaluationMetric: ReturnType<typeof createUserPartialModelLoaderByUserEvaluationMetricId>;
@@ -41,6 +42,7 @@ export interface Dataloaders {
         loaderBySubPartialModelId: ReturnType<typeof createPartialModelLoaderBySubPartialModelId>;
         loaderBySuperPartialModelId: ReturnType<typeof createPartialModelLoaderBySuperPartialModelId>;
         loaderByEvaluationMetricId: ReturnType<typeof createPartialModelLoaderByEvaluationMetricId>;
+        loaderByMaturityModelId: ReturnType<typeof createPartialModelLoaderByMaturityModelId>;
     };
     evaluationMetric: {
         loaderByPartialModelId: ReturnType<typeof createEvaluationMetricLoaderByPartialModelId>;

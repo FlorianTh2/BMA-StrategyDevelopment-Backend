@@ -8,6 +8,7 @@ import { EvaluationMetric } from "../../database/entities/evaluationMetric";
 import { UserPartialModel } from "../../database/entities/userPartialModel";
 import { UserEvaluationMetric } from "../../database/entities/userEvaluationMetric";
 import { SYSTEM } from "../../constants";
+import { MaturityModel } from "../../database/entities/maturityModel";
 
 export default class CreateBasicSeed implements Seeder {
     public async run(factory: Factory, connection: Connection): Promise<any> {
@@ -162,6 +163,13 @@ export default class CreateBasicSeed implements Seeder {
         const partialModels: PartialModel[] = await Promise.all(
             resolvePartialModelsAcrossAllNestedLevels(partialModelsData),
         );
+
+        const maturityModels: MaturityModel[] = await factory(MaturityModel)()
+            .map(async (a) => {
+                a.partialModels = partialModels;
+                return a;
+            })
+            .createMany(1);
 
         function resolveUserPartialModelsAcrossAllNestedLevels(
             partialModels: PartialModel[],

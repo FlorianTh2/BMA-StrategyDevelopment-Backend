@@ -15,12 +15,13 @@ import { createEvaluationMetricLoaderByPartialModelId } from "./evaluationMetric
 import { createPartialModelLoaderByEvaluationMetricId } from "./partialModel/createPartialModelLoaderByEvaluationMetricId";
 import { createUserPartialModelLoaderByUserEvaluationMetricId } from "./userPartialModel/createUserPartialModelLoaderByUserEvaluationMetricId";
 import { createEvaluationMetricLoaderByUserEvaluationMetricId } from "./evaluationMetric/createEvaluationMetricLoaderByUserEvaluationMetricId";
+import { createPartialModelLoaderByMaturityModelId } from "./partialModel/createPartialModelLoaderByMaturityModelId";
 
 export function createDataloaders(): Dataloaders {
     return {
         project: {
             loaderByUserId: createProjectLoaderByUserId(),
-            loaderByMaturityModelId: createProjectLoaderByUserMaturityModelId(),
+            loaderByUserMaturityModelId: createProjectLoaderByUserMaturityModelId(),
         },
         user: {
             loaderByProjectId: createUserLoaderByProjectId(),
@@ -30,7 +31,7 @@ export function createDataloaders(): Dataloaders {
             loaderByUserPartialModelId: createUserMaturityModelLoaderByUserPartialModelId(),
         },
         userPartialModel: {
-            loaderByMaturityModelId: createUserPartialModelLoaderByUserMaturityModelId(),
+            loaderByUserMaturityModelId: createUserPartialModelLoaderByUserMaturityModelId(),
             loaderBySubUserPartialModelId: createUserPartialModelLoaderBySubUserPartialModelId(),
             loaderBySuperUserPartialModelId: createUserPartialModelLoaderBySuperUserPartialModelId(),
             loaderByUserEvaluationMetric: createUserPartialModelLoaderByUserEvaluationMetricId(),
@@ -43,6 +44,7 @@ export function createDataloaders(): Dataloaders {
             loaderBySubPartialModelId: createPartialModelLoaderBySubPartialModelId(),
             loaderBySuperPartialModelId: createPartialModelLoaderBySuperPartialModelId(),
             loaderByEvaluationMetricId: createPartialModelLoaderByEvaluationMetricId(),
+            loaderByMaturityModelId: createPartialModelLoaderByMaturityModelId(),
         },
         evaluationMetric: {
             loaderByPartialModelId: createEvaluationMetricLoaderByPartialModelId(),
