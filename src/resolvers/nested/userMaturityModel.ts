@@ -3,7 +3,7 @@ import { User } from "../../database/entities/user";
 import { Project } from "../../database/entities/project";
 import { UserPartialModel } from "../../database/entities/userPartialModel";
 
-export const MaturityModel = {
+export const UserMaturityModel = {
     projects: async (parent, _args, context: ApolloContext, info) => {
         // resolver input
         const maturityModelId = parent.id;

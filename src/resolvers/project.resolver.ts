@@ -34,7 +34,7 @@ export const projectQuery = {
         // resolver business logic
         const dbResult = await context.typeormManager
             .getRepository(Project)
-            .findOne({ where: { id: id, creator: context.userId } });
+            .findOne({ where: { id: id, creator: context.user.id } });
         if (!dbResult)
             throw new AuthenticationError("Project was not found. Check if this project was created by you!");
 
@@ -49,7 +49,7 @@ export const projectQuery = {
         // resolver business logic
         const dbResult = await context.typeormManager
             .getRepository(Project)
-            .find({ where: { creator: context.userId } });
+            .find({ where: { creator: context.user.id } });
 
         // resolver return
         const resolverResult = [...dbResult];

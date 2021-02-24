@@ -7,6 +7,7 @@ import { verifyToken } from "../utils/authorization/authorization";
 import { makeExecutableSchema } from "graphql-tools";
 import { applyMiddleware } from "graphql-middleware";
 import { permissions } from "../shield/shield";
+import { User } from "../database/entities/user";
 
 // this separation from only the presentation/view/interface layer (=only apollo-server-resolver layer) to
 //  a interface layer + business-logic layer is not further continued since in that case we had to introduce
@@ -35,11 +36,13 @@ export async function install_apolloServer() {
         ),
         playground: true,
         introspection: true,
-        context: ({ req, res }) => {
+        context: async ({ req, res }) => {
             return {
                 req,
                 res,
-                userId: verifyToken(req?.headers?.authorization),
+                user: verifyToken(req?.headers?.authorization)
+                    ? await getManager().getRepository(User).findOne(verifyToken(req?.headers?.authorization))
+                    : undefined,
                 dataLoaders: createDataloaders(),
                 typeormManager: getManager(),
             };

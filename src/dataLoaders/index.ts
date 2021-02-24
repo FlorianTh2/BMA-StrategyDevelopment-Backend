@@ -1,10 +1,10 @@
 import { Dataloaders } from "../types/dataloaders";
 import { createProjectLoaderByUserId } from "./project/createProjectLoaderByUserId";
 import { createUserLoaderByProjectId } from "./user/createUserLoaderByProjectId";
-import { createProjectLoaderByMaturityModelId } from "./project/createProjectLoaderByMaturityModelId";
-import { createUserPartialModelLoaderByMaturityModelId } from "./userPartialModel/createUserPartialModelLoaderByMaturityModelId";
-import { createMaturityModelLoaderByUserPartialModelId } from "./maturityModel/createMaturityModelLoaderByUserPartialModelId";
-import { createMaturityModelLoaderByProjectId } from "./maturityModel/createMaturityModelLoaderByProjectId";
+import { createProjectLoaderByUserMaturityModelId } from "./project/createProjectLoaderByUserMaturityModelId";
+import { createUserPartialModelLoaderByUserMaturityModelId } from "./userPartialModel/createUserPartialModelLoaderByUserMaturityModelId";
+import { createUserMaturityModelLoaderByUserPartialModelId } from "./userMaturityModel/createUserMaturityModelLoaderByUserPartialModelId";
+import { createUserMaturityModelLoaderByProjectId } from "./userMaturityModel/createUserMaturityModelLoaderByProjectId";
 import { createUserPartialModelLoaderBySuperUserPartialModelId } from "./userPartialModel/createUserPartialModelLoaderBySuperUserPartialModelId";
 import { createUserPartialModelLoaderBySubUserPartialModelId } from "./userPartialModel/createUserPartialModelLoaderBySubUserPartialModelId";
 import { createUserEvaluationMetricLoaderByUserPartialModelId } from "./userEvaluationMetric/createUserEvaluationMetricLoaderByUserPartialModelId";
@@ -20,17 +20,17 @@ export function createDataloaders(): Dataloaders {
     return {
         project: {
             loaderByUserId: createProjectLoaderByUserId(),
-            loaderByMaturityModelId: createProjectLoaderByMaturityModelId(),
+            loaderByMaturityModelId: createProjectLoaderByUserMaturityModelId(),
         },
         user: {
             loaderByProjectId: createUserLoaderByProjectId(),
         },
-        maturityModel: {
-            loaderByProjectId: createMaturityModelLoaderByProjectId(),
-            loaderByUserPartialModelId: createMaturityModelLoaderByUserPartialModelId(),
+        userMaturityModel: {
+            loaderByProjectId: createUserMaturityModelLoaderByProjectId(),
+            loaderByUserPartialModelId: createUserMaturityModelLoaderByUserPartialModelId(),
         },
         userPartialModel: {
-            loaderByMaturityModelId: createUserPartialModelLoaderByMaturityModelId(),
+            loaderByMaturityModelId: createUserPartialModelLoaderByUserMaturityModelId(),
             loaderBySubUserPartialModelId: createUserPartialModelLoaderBySubUserPartialModelId(),
             loaderBySuperUserPartialModelId: createUserPartialModelLoaderBySuperUserPartialModelId(),
             loaderByUserEvaluationMetric: createUserPartialModelLoaderByUserEvaluationMetricId(),

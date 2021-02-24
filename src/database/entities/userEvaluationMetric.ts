@@ -12,7 +12,7 @@ import {
 } from "typeorm";
 import { Project } from "./project";
 import { User } from "./user";
-import { MaturityModel } from "./maturityModel";
+import { UserMaturityModel } from "./userMaturityModel";
 import { UserPartialModel } from "./userPartialModel";
 import { EvaluationMetric } from "./evaluationMetric";
 

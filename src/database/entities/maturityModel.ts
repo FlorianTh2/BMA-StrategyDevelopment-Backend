@@ -11,6 +11,7 @@ import {
 } from "typeorm";
 import { Project } from "./project";
 import { UserPartialModel } from "./userPartialModel";
+import { PartialModel } from "./partialModel";
 
 @Entity()
 export class MaturityModel {
@@ -22,16 +23,14 @@ export class MaturityModel {
     })
     name: string;
 
-    @Column("float", {
-        nullable: true,
-    })
-    maturityLevel: number;
+    @Column("int")
+    version: number;
 
-    @ManyToMany(() => Project, (project) => project.maturityModels)
+    @ManyToMany(() => Project, (project) => project.userMaturityModels)
     projects: Project[];
 
-    @OneToMany(() => UserPartialModel, (userPartialModel) => userPartialModel.maturityModel)
-    userPartialModels: UserPartialModel[];
+    @OneToMany(() => PartialModel, (partialModel) => partialModel.maturityModel)
+    partialModels: PartialModel[];
 
     @CreateDateColumn()
     created: Date;

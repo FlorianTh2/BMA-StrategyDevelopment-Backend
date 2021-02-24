@@ -1,11 +1,11 @@
 import DataLoader from "dataloader";
 import { getRepository } from "typeorm";
 import { Project } from "../../database/entities/project";
-import { MaturityModel } from "../../database/entities/maturityModel";
+import { UserMaturityModel } from "../../database/entities/userMaturityModel";
 
-export function createProjectLoaderByMaturityModelId() {
+export function createProjectLoaderByUserMaturityModelId() {
     return new DataLoader<number, Project[]>(async (maturityModelIds) => {
-        const maturityModelsWithAttechedProjects = await getRepository(MaturityModel).findByIds(
+        const maturityModelsWithAttechedProjects = await getRepository(UserMaturityModel).findByIds(
             maturityModelIds as number[],
             {
                 relations: ["projects"],

@@ -12,7 +12,7 @@ import {
 } from "typeorm";
 import { Project } from "./project";
 import { User } from "./user";
-import { MaturityModel } from "./maturityModel";
+import { UserMaturityModel } from "./userMaturityModel";
 import { UserEvaluationMetric } from "./userEvaluationMetric";
 import { PartialModel } from "./partialModel";
 
@@ -32,8 +32,8 @@ export class UserPartialModel {
     @OneToMany(() => UserEvaluationMetric, (userEvaluationMetric) => userEvaluationMetric.userPartialModel)
     userEvaluationMetrics: UserEvaluationMetric[];
 
-    @ManyToOne(() => MaturityModel, (maturityModel) => maturityModel.userPartialModels)
-    maturityModel: MaturityModel;
+    @ManyToOne(() => UserMaturityModel, (userMaturityModel) => userMaturityModel.userPartialModels)
+    userMaturityModel: UserMaturityModel;
 
     @OneToMany(() => UserPartialModel, (userPartialModel) => userPartialModel.superUserPartialModel)
     subUserPartialModels: UserPartialModel[];

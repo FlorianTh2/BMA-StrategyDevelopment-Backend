@@ -1,10 +1,10 @@
 import * as Faker from "faker";
 import { define } from "typeorm-seeding";
 import { Project } from "../../database/entities/project";
-import { MaturityModel } from "../../database/entities/maturityModel";
+import { UserMaturityModel } from "../../database/entities/userMaturityModel";
 
-define(MaturityModel, (faker: typeof Faker) => {
-    let mm = new MaturityModel();
+define(UserMaturityModel, (faker: typeof Faker) => {
+    let mm = new UserMaturityModel();
     mm.name = faker.random.word() + "MaturityModel";
     return mm;
 });

@@ -35,7 +35,7 @@ export const userQuery = {
         const id = args.id;
 
         // resolver business logic
-        const dbResult = await context.typeormManager.getRepository(User).findOne({ where: { id: context.userId } });
+        const dbResult = await context.typeormManager.getRepository(User).findOne({ where: { id: context.user.id } });
 
         // resolver return
         const resolverResult = { ...dbResult };
@@ -59,7 +59,7 @@ export const userMutation = {
         if (user.password !== generateSHA512Hash(userLoginRequest.password))
             throw new AuthenticationError("Wrong credentials");
 
-        return createToken(user.id.toString());
+        return createToken(user);
     },
 
     async register(parent, args, context: ApolloContext, info) {
@@ -84,6 +84,6 @@ export const userMutation = {
         };
 
         const createdUser = await context.typeormManager.getRepository(User).save(user);
-        return createToken(createdUser?.id.toString());
+        return createToken(createdUser);
     },
 };

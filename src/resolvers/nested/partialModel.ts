@@ -1,5 +1,5 @@
 import { ApolloContext } from "../../types/apolloContext";
-import { MaturityModel } from "../../database/entities/maturityModel";
+import { UserMaturityModel } from "../../database/entities/userMaturityModel";
 import { PartialModel as PartialModelEntity } from "../../database/entities/partialModel";
 import { EvaluationMetric } from "../../database/entities/evaluationMetric";
 

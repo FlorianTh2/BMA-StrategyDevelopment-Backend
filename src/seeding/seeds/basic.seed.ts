@@ -2,7 +2,7 @@ import { Factory, Seeder } from "typeorm-seeding";
 import { Connection } from "typeorm";
 import { User } from "../../database/entities/user";
 import { Project } from "../../database/entities/project";
-import { MaturityModel } from "../../database/entities/maturityModel";
+import { UserMaturityModel } from "../../database/entities/userMaturityModel";
 import { PartialModel } from "../../database/entities/partialModel";
 import { EvaluationMetric } from "../../database/entities/evaluationMetric";
 import { UserPartialModel } from "../../database/entities/userPartialModel";
@@ -17,7 +17,7 @@ export default class CreateBasicSeed implements Seeder {
             })
             .create();
 
-        const maturityModels = await factory(MaturityModel)()
+        const userMaturityModels = await factory(UserMaturityModel)()
             .map(async (a) => {
                 a.creator = user.id.toString();
                 a.updater = user.id.toString();
@@ -28,7 +28,7 @@ export default class CreateBasicSeed implements Seeder {
         const projects = await factory(Project)()
             .map(async (a) => {
                 a.user = user;
-                a.maturityModels = maturityModels;
+                a.userMaturityModels = userMaturityModels;
                 a.creator = user.id.toString();
                 a.updater = user.id.toString();
                 return a;
@@ -171,7 +171,7 @@ export default class CreateBasicSeed implements Seeder {
                     await factory(UserPartialModel)()
                         .map(async (b) => {
                             b.partialModel = a;
-                            b.maturityModel = maturityModels[0];
+                            b.userMaturityModel = userMaturityModels[0];
                             b.userEvaluationMetrics =
                                 Array.isArray(a.evaluationMetrics) && a.evaluationMetrics.length
                                     ? await Promise.all(

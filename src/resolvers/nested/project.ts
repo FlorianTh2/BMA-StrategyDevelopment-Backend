@@ -1,6 +1,6 @@
 import { ApolloContext } from "../../types/apolloContext";
 import { User } from "../../database/entities/user";
-import { MaturityModel } from "../../database/entities/maturityModel";
+import { UserMaturityModel } from "../../database/entities/userMaturityModel";
 
 // called with queries like: query{projects{user{id}}}
 export const Project = {
@@ -24,12 +24,14 @@ export const Project = {
         return resolverResult;
     },
 
-    maturityModels: async (parent, _args, context: ApolloContext, info) => {
+    userMaturityModels: async (parent, _args, context: ApolloContext, info) => {
         // resolver input
         const projectId = parent.id;
 
         // resolver business logic
-        const dbResult: MaturityModel[] = await context.dataLoaders.maturityModel.loaderByProjectId.load(projectId);
+        const dbResult: UserMaturityModel[] = await context.dataLoaders.userMaturityModel.loaderByProjectId.load(
+            projectId,
+        );
 
         // resolver return
         const resolverResult = [...dbResult];

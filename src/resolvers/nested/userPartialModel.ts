@@ -1,17 +1,17 @@
 import { ApolloContext } from "../../types/apolloContext";
 import { Project } from "../../database/entities/project";
-import { MaturityModel } from "../../database/entities/maturityModel";
+import { UserMaturityModel } from "../../database/entities/userMaturityModel";
 import { UserPartialModel as UserPartialModelEntity } from "../../database/entities/userPartialModel";
 import { UserEvaluationMetric } from "../../database/entities/userEvaluationMetric";
 import { PartialModel } from "../../database/entities/partialModel";
 
 export const UserPartialModel = {
-    maturityModel: async (parent, _args, context: ApolloContext, info) => {
+    userMaturityModel: async (parent, _args, context: ApolloContext, info) => {
         // resolver input
         const userPartialModelId = parent.id;
 
         // resolver business logic
-        const dbResult: MaturityModel = await context.dataLoaders.maturityModel.loaderByUserPartialModelId.load(
+        const dbResult: UserMaturityModel = await context.dataLoaders.userMaturityModel.loaderByUserPartialModelId.load(
             userPartialModelId,
         );
 

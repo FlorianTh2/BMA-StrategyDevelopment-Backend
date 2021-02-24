@@ -8,10 +8,10 @@ type Query {
     users: [User!]
     profileOfUser: User!
 
-    maturityModel(id: ID!): MaturityModel
-    maturityModels: [MaturityModel!]
-    maturityModelOfUser(id: ID!): MaturityModel
-    maturityModelsOfUser: [MaturityModel!]
+    userMaturityModel(id: ID!): UserMaturityModel
+    userMaturityModels: [UserMaturityModel!]
+    userMaturityModelOfUser(id: ID!): UserMaturityModel
+    userMaturityModelsOfUser: [UserMaturityModel!]
 
     userPartialModel(id: ID!): UserPartialModel
     userPartialModels: [UserPartialModel!]
@@ -64,12 +64,12 @@ type Project {
     name: String!
     description: String
     user: User!
-    maturityModels: [MaturityModel!]!
+    userMaturityModels: [UserMaturityModel!]!
     created: String!
     updated: String!
 }
 
-type MaturityModel {
+type UserMaturityModel {
     id: ID!
     name: String
     maturityLevel: Float
@@ -87,7 +87,7 @@ type UserPartialModel {
     id: ID!
     maturityLevelEvaluationMetrics: Float
 
-    maturityModel: MaturityModel!
+    userMaturityModel: UserMaturityModel!
     superUserPartialModel: UserPartialModel
     subUserPartialModels: [UserPartialModel]!
     userEvaluationMetrics: [UserEvaluationMetric!]!

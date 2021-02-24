@@ -1,17 +1,17 @@
 import DataLoader from "dataloader";
 import { getRepository } from "typeorm";
 import { Project } from "../../database/entities/project";
-import { MaturityModel } from "../../database/entities/maturityModel";
+import { UserMaturityModel } from "../../database/entities/userMaturityModel";
 import { UserPartialModel } from "../../database/entities/userPartialModel";
 
-export function createMaturityModelLoaderByUserPartialModelId() {
-    return new DataLoader<number, MaturityModel>(async (userPartialModelIds) => {
+export function createUserMaturityModelLoaderByUserPartialModelId() {
+    return new DataLoader<number, UserMaturityModel>(async (userPartialModelIds) => {
         const userPartialModelsWithAttachedMaturityModel = await getRepository(UserPartialModel).findByIds(
             userPartialModelIds as number[],
             {
-                relations: ["maturityModel"],
+                relations: ["userMaturityModel"],
             },
         );
-        return userPartialModelsWithAttachedMaturityModel.map((a) => a.maturityModel);
+        return userPartialModelsWithAttachedMaturityModel.map((a) => a.userMaturityModel);
     });
 }

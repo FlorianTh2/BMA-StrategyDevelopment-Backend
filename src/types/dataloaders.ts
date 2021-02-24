@@ -1,9 +1,9 @@
 import { createUserLoaderByProjectId } from "../dataLoaders/user/createUserLoaderByProjectId";
 import { createProjectLoaderByUserId } from "../dataLoaders/project/createProjectLoaderByUserId";
-import { createProjectLoaderByMaturityModelId } from "../dataLoaders/project/createProjectLoaderByMaturityModelId";
-import { createUserPartialModelLoaderByMaturityModelId } from "../dataLoaders/userPartialModel/createUserPartialModelLoaderByMaturityModelId";
-import { createMaturityModelLoaderByUserPartialModelId } from "../dataLoaders/maturityModel/createMaturityModelLoaderByUserPartialModelId";
-import { createMaturityModelLoaderByProjectId } from "../dataLoaders/maturityModel/createMaturityModelLoaderByProjectId";
+import { createProjectLoaderByUserMaturityModelId } from "../dataLoaders/project/createProjectLoaderByUserMaturityModelId";
+import { createUserPartialModelLoaderByUserMaturityModelId } from "../dataLoaders/userPartialModel/createUserPartialModelLoaderByUserMaturityModelId";
+import { createUserMaturityModelLoaderByUserPartialModelId } from "../dataLoaders/userMaturityModel/createUserMaturityModelLoaderByUserPartialModelId";
+import { createUserMaturityModelLoaderByProjectId } from "../dataLoaders/userMaturityModel/createUserMaturityModelLoaderByProjectId";
 import { createUserPartialModelLoaderBySuperUserPartialModelId } from "../dataLoaders/userPartialModel/createUserPartialModelLoaderBySuperUserPartialModelId";
 import { createUserPartialModelLoaderBySubUserPartialModelId } from "../dataLoaders/userPartialModel/createUserPartialModelLoaderBySubUserPartialModelId";
 import { createUserEvaluationMetricLoaderByUserPartialModelId } from "../dataLoaders/userEvaluationMetric/createUserEvaluationMetricLoaderByUserPartialModelId";
@@ -18,17 +18,17 @@ import { createEvaluationMetricLoaderByUserEvaluationMetricId } from "../dataLoa
 export interface Dataloaders {
     project: {
         loaderByUserId: ReturnType<typeof createProjectLoaderByUserId>;
-        loaderByMaturityModelId: ReturnType<typeof createProjectLoaderByMaturityModelId>;
+        loaderByMaturityModelId: ReturnType<typeof createProjectLoaderByUserMaturityModelId>;
     };
     user: {
         loaderByProjectId: ReturnType<typeof createUserLoaderByProjectId>;
     };
-    maturityModel: {
-        loaderByUserPartialModelId: ReturnType<typeof createMaturityModelLoaderByUserPartialModelId>;
-        loaderByProjectId: ReturnType<typeof createMaturityModelLoaderByProjectId>;
+    userMaturityModel: {
+        loaderByUserPartialModelId: ReturnType<typeof createUserMaturityModelLoaderByUserPartialModelId>;
+        loaderByProjectId: ReturnType<typeof createUserMaturityModelLoaderByProjectId>;
     };
     userPartialModel: {
-        loaderByMaturityModelId: ReturnType<typeof createUserPartialModelLoaderByMaturityModelId>;
+        loaderByMaturityModelId: ReturnType<typeof createUserPartialModelLoaderByUserMaturityModelId>;
         loaderBySubUserPartialModelId: ReturnType<typeof createUserPartialModelLoaderBySubUserPartialModelId>;
         loaderBySuperUserPartialModelId: ReturnType<typeof createUserPartialModelLoaderBySuperUserPartialModelId>;
         loaderByUserEvaluationMetric: ReturnType<typeof createUserPartialModelLoaderByUserEvaluationMetricId>;

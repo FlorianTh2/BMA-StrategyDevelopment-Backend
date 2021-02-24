@@ -5,15 +5,15 @@ import {
     BaseEntity,
     ManyToMany,
     JoinTable,
-    ManyToOne,
+    OneToMany,
     CreateDateColumn,
     UpdateDateColumn,
 } from "typeorm";
-import { UserMaturityModel } from "./userMaturityModel";
-import { User } from "./user";
+import { Project } from "./project";
+import { UserPartialModel } from "./userPartialModel";
 
 @Entity()
-export class Project {
+export class UserMaturityModel {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -22,20 +22,16 @@ export class Project {
     })
     name: string;
 
-    @Column("text", {
+    @Column("float", {
         nullable: true,
     })
-    description: string;
+    maturityLevel: number;
 
-    @ManyToOne(() => User, (user) => user.projects)
-    user: User;
+    @ManyToMany(() => Project, (project) => project.userMaturityModels)
+    projects: Project[];
 
-    @Column({ nullable: true })
-    userId: number;
-
-    @ManyToMany(() => UserMaturityModel, (maturityModel) => maturityModel.projects)
-    @JoinTable()
-    userMaturityModels: UserMaturityModel[];
+    @OneToMany(() => UserPartialModel, (userPartialModel) => userPartialModel.userMaturityModel)
+    userPartialModels: UserPartialModel[];
 
     @CreateDateColumn()
     created: Date;

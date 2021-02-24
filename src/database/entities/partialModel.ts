@@ -2,20 +2,15 @@ import {
     Entity,
     Column,
     PrimaryGeneratedColumn,
-    BaseEntity,
-    ManyToMany,
-    JoinTable,
     OneToMany,
     ManyToOne,
     CreateDateColumn,
     UpdateDateColumn,
 } from "typeorm";
-import { Project } from "./project";
-import { User } from "./user";
-import { MaturityModel } from "./maturityModel";
-import { UserEvaluationMetric } from "./userEvaluationMetric";
 import { UserPartialModel } from "./userPartialModel";
 import { EvaluationMetric } from "./evaluationMetric";
+import { UserMaturityModel } from "./userMaturityModel";
+import { MaturityModel } from "./maturityModel";
 
 @Entity()
 export class PartialModel {
@@ -46,6 +41,9 @@ export class PartialModel {
 
     @ManyToOne(() => PartialModel, (PartialModel) => PartialModel.subPartialModels)
     superPartialModel: PartialModel;
+
+    @ManyToOne(() => MaturityModel, (maturityModel) => maturityModel.partialModels)
+    maturityModel: MaturityModel;
 
     @CreateDateColumn()
     created: Date;
