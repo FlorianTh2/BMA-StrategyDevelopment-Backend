@@ -30,6 +30,7 @@ const isAdmin = rule({ cache: "contextual" })(async (parent, args, context: Apol
 export const permissions = shield(
     {
         Query: {
+            checkEmailAddress: allow,
             partialModel: allow,
             partialModels: allow,
             evaluationMetric: allow,

@@ -41,6 +41,19 @@ export const userQuery = {
         const resolverResult = { ...dbResult };
         return resolverResult;
     },
+
+    async checkEmailAddress(parent, args, context: ApolloContext, info) {
+        // resolver input
+        const email = args.emailAddress;
+
+        // resolver business logic
+        const dbResult = await context.typeormManager.getRepository(User).findOne({ where: { email: email } });
+
+        // resolver return
+        // true if email taken
+        const resolverResult = dbResult ? true : false;
+        return resolverResult;
+    },
 };
 
 export const userMutation = {

@@ -7,7 +7,7 @@ import { SYSTEM } from "../../constants";
 
 define(MaturityModel, (faker: typeof Faker) => {
     let mm = new MaturityModel();
-    mm.name = faker.random.word() + "MaturityModel";
+    mm.name = "Knape 2021";
     mm.creator = SYSTEM;
     mm.updater = SYSTEM;
     mm.version = 1;
