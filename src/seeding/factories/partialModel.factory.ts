@@ -5,6 +5,5 @@ import { PartialModel } from "../../database/entities/partialModel";
 
 define(PartialModel, (faker: typeof Faker) => {
     let partialModel = new PartialModel();
-    partialModel.description = faker.random.words();
     return partialModel;
 });

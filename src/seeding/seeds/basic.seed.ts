@@ -9,119 +9,51 @@ import { UserPartialModel } from "../../database/entities/userPartialModel";
 import { UserEvaluationMetric } from "../../database/entities/userEvaluationMetric";
 import { SYSTEM } from "../../constants";
 import { MaturityModel } from "../../database/entities/maturityModel";
+import { maturityModel_partialModel_exampleData } from "../data/maturityModel_PartialModel_ExampleData";
+import { generateSHA512Hash } from "../../utils/authorization/cryptography";
+import * as faker from "faker";
 
 export default class CreateBasicSeed implements Seeder {
     public async run(factory: Factory, connection: Connection): Promise<any> {
-        const user = await factory(User)()
+        const admin = await factory(User)()
             .map(async (t) => {
+                t.email = process.env.ADMIN_EMAIL as string;
+                t.password = generateSHA512Hash(process.env.ADMIN_PW as string);
+                t.firstname = "admin";
+                t.lastname = "admin";
                 return t;
             })
             .create();
 
+        const users = await factory(User)()
+            .map(async (t) => {
+                t.email = faker.internet.email().toLocaleLowerCase();
+                t.password = generateSHA512Hash(process.env.USER_PW as string);
+                t.firstname = faker.name.firstName();
+                t.lastname = faker.name.lastName();
+                return t;
+            })
+            .createMany(3);
+
         const userMaturityModels = await factory(UserMaturityModel)()
             .map(async (a) => {
-                a.creator = user.id.toString();
-                a.updater = user.id.toString();
+                a.creator = admin.id.toString();
+                a.updater = admin.id.toString();
                 return a;
             })
             .createMany(2);
 
         const projects = await factory(Project)()
             .map(async (a) => {
-                a.user = user;
+                a.user = admin;
                 a.userMaturityModels = userMaturityModels;
-                a.creator = user.id.toString();
-                a.updater = user.id.toString();
+                a.creator = admin.id.toString();
+                a.updater = admin.id.toString();
                 return a;
             })
             .createMany(3);
 
-        const partialModelsData: PartialModel[] = [
-            {
-                name: "partialModelTest1",
-                weight: 0.2,
-                subPartialModels: [
-                    {
-                        name: "sub1_partialModelTest1",
-                        weight: 0.1,
-                        evaluationMetrics: [
-                            {
-                                name: "Geplant",
-                                weight: 0.1,
-                            },
-                            {
-                                name: "Evaluiert",
-                                weight: 0.5,
-                            },
-                            {
-                                name: "Eingeführt",
-                                weight: 0.4,
-                            },
-                        ],
-                    } as PartialModel,
-                    {
-                        name: "sub2_partialModelTest1",
-                        weight: 0.1,
-                        evaluationMetrics: [
-                            {
-                                name: "Geplant",
-                                weight: 0.2,
-                            },
-                            {
-                                name: "Evaluiert",
-                                weight: 0.5,
-                            },
-                            {
-                                name: "Eingeführt",
-                                weight: 0.3,
-                            },
-                        ],
-                    } as PartialModel,
-                ],
-            } as PartialModel,
-            {
-                name: "partialModelTest2",
-                weight: 0.2,
-                subPartialModels: [
-                    {
-                        name: "sub1_partialModelTest2",
-                        weight: 0.1,
-                        evaluationMetrics: [
-                            {
-                                name: "Geplant",
-                                weight: 0.1,
-                            },
-                            {
-                                name: "Evaluiert",
-                                weight: 0.5,
-                            },
-                            {
-                                name: "Eingeführt",
-                                weight: 0.4,
-                            },
-                        ],
-                    } as PartialModel,
-                    {
-                        name: "sub2_partialModelTest2",
-                        weight: 0.1,
-                        evaluationMetrics: [
-                            {
-                                name: "Geplant",
-                                weight: 0.2,
-                            },
-                            {
-                                name: "Evaluiert",
-                                weight: 0.5,
-                            },
-                            {
-                                name: "Eingeführt",
-                                weight: 0.3,
-                            },
-                        ],
-                    } as PartialModel,
-                ],
-            } as PartialModel,
-        ];
+        const partialModelsData: PartialModel[] = maturityModel_partialModel_exampleData;
 
         // function to create partialModels including unknown amount of nested subPartialModels and to create the corresponding evaluationMetric
         function resolvePartialModelsAcrossAllNestedLevels(partialModels: PartialModel[]): Promise<PartialModel>[] {
@@ -130,6 +62,7 @@ export default class CreateBasicSeed implements Seeder {
                     await factory(PartialModel)()
                         .map(async (b) => {
                             b.name = a.name;
+                            b.description = a.description;
                             b.weight = a.weight;
                             b.evaluationMetrics =
                                 Array.isArray(a.evaluationMetrics) && a.evaluationMetrics.length
@@ -188,8 +121,8 @@ export default class CreateBasicSeed implements Seeder {
                                                   await factory(UserEvaluationMetric)()
                                                       .map(async (d) => {
                                                           d.evaluationMetric = c;
-                                                          d.creator = user.id.toString();
-                                                          d.updater = user.id.toString();
+                                                          d.creator = admin.id.toString();
+                                                          d.updater = admin.id.toString();
                                                           return d;
                                                       })
                                                       .create(),
@@ -202,8 +135,8 @@ export default class CreateBasicSeed implements Seeder {
                                           resolveUserPartialModelsAcrossAllNestedLevels(a.subPartialModels),
                                       )
                                     : [];
-                            b.creator = user.id.toString();
-                            b.updater = user.id.toString();
+                            b.creator = admin.id.toString();
+                            b.updater = admin.id.toString();
                             return b;
                         })
                         .create(),
