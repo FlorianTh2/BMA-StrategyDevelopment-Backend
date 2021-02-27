@@ -41,7 +41,7 @@ export default class CreateBasicSeed implements Seeder {
                 a.updater = admin.id.toString();
                 return a;
             })
-            .createMany(2);
+            .createMany(1);
 
         const projects = await factory(Project)()
             .map(async (a) => {
@@ -106,13 +106,18 @@ export default class CreateBasicSeed implements Seeder {
 
         function resolveUserPartialModelsAcrossAllNestedLevels(
             partialModels: PartialModel[],
+            // only applied to the top-level partialModels since
+            // only top-level partialModels have a reference to the userMaturityModel
+            userMaturityModel: UserMaturityModel | undefined,
         ): Promise<UserPartialModel>[] {
             return partialModels.map(
                 async (a) =>
                     await factory(UserPartialModel)()
                         .map(async (b) => {
                             b.partialModel = a;
-                            b.userMaturityModel = userMaturityModels[0];
+                            b.userMaturityModel = userMaturityModel
+                                ? (userMaturityModel as UserMaturityModel)
+                                : ({} as UserMaturityModel);
                             b.userEvaluationMetrics =
                                 Array.isArray(a.evaluationMetrics) && a.evaluationMetrics.length
                                     ? await Promise.all(
@@ -132,7 +137,7 @@ export default class CreateBasicSeed implements Seeder {
                             b.subUserPartialModels =
                                 Array.isArray(a.subPartialModels) && a.subPartialModels.length
                                     ? await Promise.all(
-                                          resolveUserPartialModelsAcrossAllNestedLevels(a.subPartialModels),
+                                          resolveUserPartialModelsAcrossAllNestedLevels(a.subPartialModels, undefined),
                                       )
                                     : [];
                             b.creator = admin.id.toString();
@@ -142,6 +147,8 @@ export default class CreateBasicSeed implements Seeder {
                         .create(),
             );
         }
-        const userPartialModels = await Promise.all(resolveUserPartialModelsAcrossAllNestedLevels(partialModels));
+        const userPartialModels = await Promise.all(
+            resolveUserPartialModelsAcrossAllNestedLevels(partialModels, userMaturityModels[0]),
+        );
     }
 }

@@ -1,7 +1,5 @@
 import DataLoader from "dataloader";
 import { getRepository } from "typeorm";
-import { Project } from "../../database/entities/project";
-import { User } from "../../database/entities/user";
 import { UserMaturityModel } from "../../database/entities/userMaturityModel";
 import { UserPartialModel } from "../../database/entities/userPartialModel";
 
