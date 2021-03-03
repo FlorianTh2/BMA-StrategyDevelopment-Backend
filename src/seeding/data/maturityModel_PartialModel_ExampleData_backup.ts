@@ -14,17 +14,14 @@ export const maturityModel_partialModel_exampleData = [
                     {
                         name: "Geplant",
                         weight: 0.3333,
-                        maxValue: 4,
                     },
                     {
                         name: "Realisiert",
                         weight: 0.3333,
-                        maxValue: 4,
                     },
                     {
                         name: "Evaluiert",
                         weight: 0.3333,
-                        maxValue: 4,
                     },
                 ],
             } as PartialModel,
@@ -37,17 +34,14 @@ export const maturityModel_partialModel_exampleData = [
                     {
                         name: "Geplant",
                         weight: 0.3333,
-                        maxValue: 4,
                     },
                     {
                         name: "Realisiert",
                         weight: 0.3333,
-                        maxValue: 4,
                     },
                     {
                         name: "Evaluiert",
                         weight: 0.3333,
-                        maxValue: 4,
                     },
                 ],
             } as PartialModel,
@@ -60,17 +54,14 @@ export const maturityModel_partialModel_exampleData = [
                     {
                         name: "Geplant",
                         weight: 0.3333,
-                        maxValue: 4,
                     },
                     {
                         name: "Realisiert",
                         weight: 0.3333,
-                        maxValue: 4,
                     },
                     {
                         name: "Evaluiert",
                         weight: 0.3333,
-                        maxValue: 4,
                     },
                 ],
             } as PartialModel,
@@ -87,9 +78,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -100,9 +106,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -113,9 +134,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -132,9 +168,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -145,9 +196,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -158,9 +224,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -177,9 +258,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -190,9 +286,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -203,9 +314,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -222,9 +348,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -235,9 +376,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -248,9 +404,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -267,9 +438,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -280,9 +466,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -293,9 +494,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -312,9 +528,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -325,9 +556,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -338,9 +584,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -357,9 +618,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -370,9 +646,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -383,9 +674,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -402,9 +708,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -415,9 +736,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,
@@ -428,9 +764,24 @@ export const maturityModel_partialModel_exampleData = [
                 weight: 0.3333,
                 evaluationMetrics: [
                     {
-                        name: "Aussage wird erfüllt",
-                        weight: 1,
-                        maxValue: 4,
+                        name: "Gar nicht",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Eher Gering",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Teilweise",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Gut",
+                        weight: 0.2,
+                    },
+                    {
+                        name: "Sehr gut",
+                        weight: 0.2,
                     },
                 ],
             } as PartialModel,

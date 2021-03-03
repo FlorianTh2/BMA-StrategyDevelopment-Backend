@@ -46,6 +46,7 @@ export const permissions = shield(
             // "*": deny
             login: allow,
             register: allow,
+            createUserMaturityModel: isAuthenticated,
         },
         Project: allow,
         User: allow,

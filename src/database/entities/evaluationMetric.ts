@@ -31,6 +31,9 @@ export class EvaluationMetric {
     @Column("float")
     weight: number;
 
+    @Column("int")
+    maxValue: number;
+
     @OneToMany(() => UserEvaluationMetric, (userEvaluationArea) => userEvaluationArea.evaluationMetric)
     userEvaluationAreas: UserEvaluationMetric[];
 

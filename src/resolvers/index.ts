@@ -3,7 +3,7 @@ import { userMutation, userQuery } from "./user.resolver";
 import { User } from "./nested/user";
 import { Project } from "./nested/project";
 import { userPartialModelQuery } from "./userPartialModel.resolver";
-import { userMaturityModelQuery } from "./userMaturityModel.resolver";
+import { userMaturityModelMutation, userMaturityModelQuery } from "./userMaturityModel.resolver";
 import { userEvaluationMetricQuery } from "./userEvaluationMetric.resolver";
 import { partialModelQuery } from "./partialModel.resolver";
 import { evaluationMetricQuery } from "./evaluationMetric.resolver";
@@ -39,6 +39,7 @@ const NestedFields = {
 
 const Mutation = {
     ...userMutation,
+    ...userMaturityModelMutation,
 };
 
 export const resolvers = {

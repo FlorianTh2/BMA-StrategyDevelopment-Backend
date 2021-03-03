@@ -7,7 +7,7 @@ import { PartialModel } from "../../database/entities/partialModel";
 import { EvaluationMetric } from "../../database/entities/evaluationMetric";
 import { UserPartialModel } from "../../database/entities/userPartialModel";
 import { UserEvaluationMetric } from "../../database/entities/userEvaluationMetric";
-import { SYSTEM } from "../../constants";
+import { MAX_VALUE_PER_METRIC, SYSTEM } from "../../constants";
 import { MaturityModel } from "../../database/entities/maturityModel";
 import { maturityModel_partialModel_exampleData } from "../data/maturityModel_PartialModel_ExampleData";
 import { generateSHA512Hash } from "../../utils/authorization/cryptography";
@@ -73,6 +73,7 @@ export default class CreateBasicSeed implements Seeder {
                                                       .map(async (d) => {
                                                           d.name = c.name;
                                                           d.weight = c.weight;
+                                                          d.maxValue = c.maxValue;
                                                           d.creator = SYSTEM;
                                                           d.updater = SYSTEM;
                                                           return d;
@@ -125,6 +126,7 @@ export default class CreateBasicSeed implements Seeder {
                                               async (c) =>
                                                   await factory(UserEvaluationMetric)()
                                                       .map(async (d) => {
+                                                          d.valueEvaluationMetric = Math.random() * c.maxValue;
                                                           d.evaluationMetric = c;
                                                           d.creator = admin.id.toString();
                                                           d.updater = admin.id.toString();

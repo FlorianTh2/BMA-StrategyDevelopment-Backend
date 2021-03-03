@@ -33,9 +33,27 @@ type Mutation {
     login(userLoginRequest: UserLoginRequest!): String
     register(userRegistrationRequest: UserRegistrationRequest!): String
 
-    # createProject(name: String): Project!
-    # updateProject(projectId: ID!, data: ProjectUpdateInput!): Project!
-    # deleteProject(projectId: ID!): Project!
+    createUserMaturityModel(userMaturityModel: CreateUserMaturityModelRequest!): Boolean!
+}
+
+input CreateUserMaturityModelRequest{
+    name: String!
+    maturityLevel: Float
+    projectId: ID!
+    userPartialModels: [CreateUserPartialModelRequest!]!
+}
+
+input CreateUserPartialModelRequest{
+    maturityLevelEvaluationMetrics: Float!
+    partialModelId: ID!
+    userEvaluationMetrics: CreateUserEvaluationMetricRequest
+    subUserPartialModels: [CreateUserPartialModelRequest]
+    superUserPartialModel: CreateUserPartialModelRequest
+}
+
+input CreateUserEvaluationMetricRequest{
+    valueEvaluationMetric: Float!
+    evaluationMetricId: ID!
 }
 
 input UserLoginRequest{
@@ -137,6 +155,7 @@ type EvaluationMetric {
     name: String!
     description: String
     weight: Float
+    maxValue: Int!
 
     partialModel: PartialModel
 
