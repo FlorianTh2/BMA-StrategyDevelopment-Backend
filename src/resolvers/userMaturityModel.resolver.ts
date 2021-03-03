@@ -99,11 +99,15 @@ function checkCreateUserMaturityModelComplete2(
             (b) => b.partialModelId === partialModel.id.toString(),
         )[0];
         if (!userPartialModel) return false;
-
+        if (!userPartialModel.maturityLevelEvaluationMetrics) return false;
         // now check all needed things
         const userPartialModelUserEvaluationMetricEvaluationMetricIds = userPartialModel.userEvaluationMetrics?.map(
             (b) => b.evaluationMetricId,
         );
+        const ifMetricExistItHasValue: boolean = userPartialModel.userEvaluationMetrics
+            ?.map((f) => (f.valueEvaluationMetric ? true : false))
+            .reduce((g, h) => g == true && h == true);
+        if (!ifMetricExistItHasValue) return false;
         const partialModelEvaluationMetricIds = partialModel.evaluationMetrics.map((c) => c.id);
         if (
             !(
@@ -121,4 +125,15 @@ function checkCreateUserMaturityModelComplete2(
         return true;
     });
     return checkList.reduce((d, e) => d === true && e === true);
+}
+
+function createUserMaturityModel(
+    context: ApolloContext,
+    createUserPartialModelRequests: CreateUserPartialModelRequest[],
+) {
+    createUserPartialModelRequests.map((a) => {
+        context.typeormManager.getRepository(UserPartialModel).save({
+            // todo
+        } as UserPartialModel);
+    });
 }
