@@ -33,7 +33,7 @@ type Mutation {
     login(userLoginRequest: UserLoginRequest!): String
     register(userRegistrationRequest: UserRegistrationRequest!): String
 
-    createUserMaturityModel(userMaturityModel: CreateUserMaturityModelRequest!): Boolean!
+    createUserMaturityModel(userMaturityModel: CreateUserMaturityModelRequest!): UserMaturityModel
 }
 
 input CreateUserMaturityModelRequest{
