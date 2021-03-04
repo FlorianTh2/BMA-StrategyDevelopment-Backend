@@ -3,12 +3,15 @@ import { ApolloContext } from "../types/apolloContext";
 import { getRepository } from "typeorm";
 import { UserPartialModel } from "../database/entities/userPartialModel";
 import { UserMaturityModel } from "../database/entities/userMaturityModel";
-import { AuthenticationError } from "apollo-server-errors";
+import { AuthenticationError, UserInputError } from "apollo-server-errors";
 import { CreateUserMaturityModelRequest } from "../contracts/requests/createUserMaturityModelRequest";
 import { MaturityModel } from "../database/entities/maturityModel";
 import { loadFullMaturityModel } from "../utils/maturityModel/loadFullMaturityModel";
 import { CreateUserPartialModelRequest } from "../contracts/requests/createUserPartialModelRequest";
 import { PartialModel } from "../database/entities/partialModel";
+import { CreateUserEvaluationMetricRequest } from "../contracts/requests/createUserEvaluationMetricRequest";
+import { UserEvaluationMetric } from "../database/entities/userEvaluationMetric";
+import { EvaluationMetric } from "../database/entities/evaluationMetric";
 
 export const userMaturityModelQuery = {
     async userMaturityModel(parent, args, context: ApolloContext, info) {
@@ -83,8 +86,25 @@ export const userMaturityModelMutation = {
             maturityModel.partialModels,
             createUserMaturityModel.userPartialModels,
         );
-        // create userMaturityModel
+        // if (!userMaturityModelComplete) {
+        //     throw new UserInputError("There was an error while saving your userMaturityModel!");
+        // }
 
+        // create userMaturityModel
+        const createdUserMaturityModel: UserMaturityModel = await context.typeormManager
+            .getRepository(UserMaturityModel)
+            .save({
+                name: createUserMaturityModel.name,
+                maturityLevel: createUserMaturityModel.maturityLevel,
+                userPartialModels: await createUserPartialModels(context, createUserMaturityModel.userPartialModels),
+                projects: [
+                    {
+                        id: parseInt(createUserMaturityModel.projectId),
+                    },
+                ],
+                creator: context.user.id.toString(),
+                updater: context.user.id.toString(),
+            } as UserMaturityModel);
         // resolver return
         return false;
     },
@@ -127,13 +147,54 @@ function checkCreateUserMaturityModelComplete2(
     return checkList.reduce((d, e) => d === true && e === true);
 }
 
-function createUserMaturityModel(
+async function createUserPartialModels(
     context: ApolloContext,
     createUserPartialModelRequests: CreateUserPartialModelRequest[],
-) {
-    createUserPartialModelRequests.map((a) => {
-        context.typeormManager.getRepository(UserPartialModel).save({
-            // todo
-        } as UserPartialModel);
-    });
+): Promise<UserPartialModel[]> {
+    const createdUserPartialModels: UserPartialModel[] = await Promise.all(
+        createUserPartialModelRequests.map(async (a) => {
+            const createdUserPartialModel: UserPartialModel = await context.typeormManager
+                .getRepository(UserPartialModel)
+                .save({
+                    maturityLevelEvaluationMetrics: a.maturityLevelEvaluationMetrics,
+                    subUserPartialModels:
+                        Array.isArray(a.subUserPartialModels) && a.subUserPartialModels.length
+                            ? await createUserPartialModels(context, a.subUserPartialModels)
+                            : [],
+                    userEvaluationMetrics:
+                        Array.isArray(a.userEvaluationMetrics) && a.userEvaluationMetrics.length
+                            ? await saveUserEvaluationMetrics(context, a.userEvaluationMetrics)
+                            : ([] as UserEvaluationMetric[]),
+                    partialModel: {
+                        id: parseInt(a.partialModelId),
+                    } as PartialModel,
+                    creator: context.user.id.toString(),
+                    updater: context.user.id.toString(),
+                } as UserPartialModel);
+            return createdUserPartialModel;
+        }),
+    );
+    return createdUserPartialModels;
+}
+
+async function saveUserEvaluationMetrics(
+    context: ApolloContext,
+    createUserEvaluationMetrics: CreateUserEvaluationMetricRequest[],
+): Promise<UserEvaluationMetric[]> {
+    const savedEntities: UserEvaluationMetric[] = await Promise.all(
+        createUserEvaluationMetrics.map(async (a) => {
+            const createdEvaluationMetric: UserEvaluationMetric = await context.typeormManager
+                .getRepository(UserEvaluationMetric)
+                .save({
+                    valueEvaluationMetric: a.valueEvaluationMetric,
+                    evaluationMetric: {
+                        id: parseInt(a.evaluationMetricId),
+                    } as EvaluationMetric,
+                    creator: context.user.id.toString(),
+                    updater: context.user.id.toString(),
+                } as UserEvaluationMetric);
+            return createdEvaluationMetric;
+        }),
+    );
+    return savedEntities;
 }
