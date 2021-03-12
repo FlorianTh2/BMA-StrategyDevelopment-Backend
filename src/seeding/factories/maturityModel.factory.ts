@@ -11,5 +11,6 @@ define(MaturityModel, (faker: typeof Faker) => {
     mm.creator = SYSTEM;
     mm.updater = SYSTEM;
     mm.version = 1;
+    mm.language = "deutsch";
     return mm;
 });

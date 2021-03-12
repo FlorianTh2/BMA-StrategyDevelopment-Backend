@@ -13,7 +13,6 @@ import { Project } from "../../database/entities/project";
 
 export function createUserLoaderByProjectId() {
     return new DataLoader<number, User>(async (projectIds) => {
-        console.log("hi3s");
         const projectsWithAttachedUser = await getRepository(Project).findByIds(projectIds as number[], {
             relations: ["user"],
         });

@@ -23,6 +23,11 @@ export class MaturityModel {
     })
     name: string;
 
+    @Column({
+        length: 100,
+    })
+    language: string;
+
     @Column("int")
     version: number;
 

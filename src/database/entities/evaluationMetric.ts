@@ -34,6 +34,9 @@ export class EvaluationMetric {
     @Column("int")
     maxValue: number;
 
+    @Column("int")
+    minValue: number;
+
     @OneToMany(() => UserEvaluationMetric, (userEvaluationArea) => userEvaluationArea.evaluationMetric)
     userEvaluationAreas: UserEvaluationMetric[];
 

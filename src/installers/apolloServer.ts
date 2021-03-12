@@ -37,6 +37,7 @@ export async function install_apolloServer() {
         playground: true,
         introspection: true,
         context: async ({ req, res }) => {
+            console.log("connection try");
             return {
                 req,
                 res,

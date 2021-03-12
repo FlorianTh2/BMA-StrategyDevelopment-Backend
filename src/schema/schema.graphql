@@ -46,7 +46,7 @@ input CreateUserMaturityModelRequest{
 input CreateUserPartialModelRequest{
     maturityLevelEvaluationMetrics: Float!
     partialModelId: ID!
-    userEvaluationMetrics: CreateUserEvaluationMetricRequest
+    userEvaluationMetrics: [CreateUserEvaluationMetricRequest]
     subUserPartialModels: [CreateUserPartialModelRequest]
     superUserPartialModel: CreateUserPartialModelRequest
 }
@@ -156,6 +156,7 @@ type EvaluationMetric {
     description: String
     weight: Float
     maxValue: Int!
+    minValue: Int!
 
     partialModel: PartialModel
 
@@ -168,6 +169,7 @@ type EvaluationMetric {
 type MaturityModel {
     id: ID!
     name: String!
+    language: String!
     version: Int!
     partialModels: [PartialModel!]!
     created: String!
