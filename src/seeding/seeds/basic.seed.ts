@@ -127,8 +127,7 @@ export default class CreateBasicSeed implements Seeder {
                                               async (c) =>
                                                   await factory(UserEvaluationMetric)()
                                                       .map(async (d) => {
-                                                          d.valueEvaluationMetric =
-                                                              c.minValue + Math.random() * c.maxValue;
+                                                          d.valueEvaluationMetric = Math.random() * c.maxValue;
                                                           d.evaluationMetric = c;
                                                           d.creator = admin.id.toString();
                                                           d.updater = admin.id.toString();
