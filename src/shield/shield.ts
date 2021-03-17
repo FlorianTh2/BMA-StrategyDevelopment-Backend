@@ -41,6 +41,8 @@ export const permissions = shield(
             userMaturityModelOfUser: isAuthenticated,
             userMaturityModelsOfUser: isAuthenticated,
             maturityModel: allow,
+            userPartialModel: isAuthenticated,
+            userPartialModels: isAuthenticated,
         },
         Mutation: {
             // "*": deny
