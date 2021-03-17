@@ -423,7 +423,7 @@ export const maturityModel_partialModel_exampleData = [
     } as PartialModel,
     {
         name: "Lernfähigkeit und Umsetzung",
-        weight: 0.6,
+        weight: 0.06,
         subPartialModels: [
             {
                 name: "Lernfähigkeit aus Daten / Metriken",
