@@ -12,7 +12,6 @@ export function createPartialModelLoaderByUserPartialModelId() {
                 relations: ["partialModel"],
             },
         );
-        // const partialModels = userWithAttachedProjects.map((a) => a.partialModel);
         const userPartialModelIdToPartialModel: Record<number, PartialModel> = {};
         userWithAttachedProjects.map((a) => {
             userPartialModelIdToPartialModel[a.id] = a.partialModel;

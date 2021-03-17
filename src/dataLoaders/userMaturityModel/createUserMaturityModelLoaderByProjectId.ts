@@ -12,6 +12,10 @@ export function createUserMaturityModelLoaderByProjectId() {
                 relations: ["userMaturityModels"],
             },
         );
-        return userPartialModelsWithAttachedMaturityModel.map((a) => a.userMaturityModels);
+        const projectIdToUserMaturityModels: Record<number, UserMaturityModel[]> = {};
+        userPartialModelsWithAttachedMaturityModel.forEach((a) => {
+            projectIdToUserMaturityModels[a.id] = a.userMaturityModels;
+        });
+        return projectIds.map((a) => projectIdToUserMaturityModels[a]);
     });
 }

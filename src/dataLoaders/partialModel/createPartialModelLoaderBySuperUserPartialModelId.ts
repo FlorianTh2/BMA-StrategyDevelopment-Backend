@@ -8,6 +8,10 @@ export function createPartialModelLoaderBySuperPartialModelId() {
         const userWithAttachedProjects = await getRepository(PartialModel).findByIds(superPartialModelIds as number[], {
             relations: ["subPartialModels"],
         });
-        return userWithAttachedProjects.map((a) => a.subPartialModels);
+        const superPartialModelIdToSubPartialModels: Record<number, PartialModel[]> = {};
+        userWithAttachedProjects.forEach((a) => {
+            superPartialModelIdToSubPartialModels[a.id] = a.subPartialModels;
+        });
+        return superPartialModelIds.map((a) => superPartialModelIdToSubPartialModels[a]);
     });
 }

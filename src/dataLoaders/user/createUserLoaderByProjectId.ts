@@ -2,6 +2,7 @@ import DataLoader from "dataloader";
 import { User } from "../../database/entities/user";
 import { getRepository } from "typeorm";
 import { Project } from "../../database/entities/project";
+import { UserPartialModel } from "../../database/entities/userPartialModel";
 
 // export const createUserLoaderByProjectId = () => {
 //     return new DataLoader<number, User>(async (userIds) => {
@@ -16,6 +17,10 @@ export function createUserLoaderByProjectId() {
         const projectsWithAttachedUser = await getRepository(Project).findByIds(projectIds as number[], {
             relations: ["user"],
         });
-        return projectsWithAttachedUser.map((a) => a.user);
+        const projectIdToUser: Record<number, User> = {};
+        projectsWithAttachedUser.forEach((a) => {
+            projectIdToUser[a.id] = a.user;
+        });
+        return projectIds.map((a) => projectIdToUser[a]);
     });
 }

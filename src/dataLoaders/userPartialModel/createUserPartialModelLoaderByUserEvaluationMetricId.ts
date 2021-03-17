@@ -11,6 +11,10 @@ export function createUserPartialModelLoaderByUserEvaluationMetricId() {
                 relations: ["userPartialModel"],
             },
         );
-        return maturityModelsWithAttachedUserPartialModels.map((a) => a.userPartialModel);
+        const userEvaluationMetricIdToUserPartialModel: Record<number, UserPartialModel> = {};
+        maturityModelsWithAttachedUserPartialModels.forEach((a) => {
+            userEvaluationMetricIdToUserPartialModel[a.id] = a.userPartialModel;
+        });
+        return userEvaluationMetricIds.map((a) => userEvaluationMetricIdToUserPartialModel[a]);
     });
 }

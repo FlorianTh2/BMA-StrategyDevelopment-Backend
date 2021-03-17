@@ -4,6 +4,7 @@ import { Project } from "../../database/entities/project";
 import { User } from "../../database/entities/user";
 import { UserMaturityModel } from "../../database/entities/userMaturityModel";
 import { UserPartialModel } from "../../database/entities/userPartialModel";
+import { PartialModel } from "../../database/entities/partialModel";
 
 // naming based on output (what it loads), not on input
 export function createUserPartialModelLoaderBySubUserPartialModelId() {
@@ -14,6 +15,10 @@ export function createUserPartialModelLoaderBySubUserPartialModelId() {
                 relations: ["superUserPartialModel"],
             },
         );
-        return maturityModelsWithAttachedSuperUserPartialModels.map((a) => a.superUserPartialModel);
+        const userPartialModelIdToSuperUserPartialModel: Record<number, UserPartialModel> = {};
+        maturityModelsWithAttachedSuperUserPartialModels.forEach((a) => {
+            userPartialModelIdToSuperUserPartialModel[a.id] = a.superUserPartialModel;
+        });
+        return userPartialModelIds.map((a) => userPartialModelIdToSuperUserPartialModel[a]);
     });
 }

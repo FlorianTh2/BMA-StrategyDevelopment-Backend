@@ -9,6 +9,10 @@ export function createPartialModelLoaderByMaturityModelId() {
         const userWithAttachedProjects = await getRepository(MaturityModel).findByIds(maturityModelIds as number[], {
             relations: ["partialModels"],
         });
-        return userWithAttachedProjects.map((a) => a.partialModels);
+        const maturityModelIdToPartialModels: Record<number, PartialModel[]> = {};
+        userWithAttachedProjects.forEach((a) => {
+            maturityModelIdToPartialModels[a.id] = a.partialModels;
+        });
+        return maturityModelIds.map((a) => maturityModelIdToPartialModels[a]);
     });
 }

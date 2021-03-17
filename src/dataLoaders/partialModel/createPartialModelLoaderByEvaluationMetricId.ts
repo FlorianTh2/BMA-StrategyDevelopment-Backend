@@ -12,6 +12,10 @@ export function createPartialModelLoaderByEvaluationMetricId() {
                 relations: ["partialModel"],
             },
         );
-        return userWithAttachedProjects.map((a) => a.partialModel);
+        const evaluationMetricIdToPartialModel: Record<number, PartialModel> = {};
+        userWithAttachedProjects.forEach((a) => {
+            evaluationMetricIdToPartialModel[a.id] = a.partialModel;
+        });
+        return evaluationMetricIds.map((a) => evaluationMetricIdToPartialModel[a]);
     });
 }
