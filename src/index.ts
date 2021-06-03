@@ -11,7 +11,7 @@ async function main() {
 
     let port = parseInt(process.env.PORT || "");
     if (isNaN(port) || port === 0) {
-        port = 4000;
+        port = 80;
     }
 
     app.listen(port, () => {
