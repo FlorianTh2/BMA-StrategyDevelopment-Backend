@@ -82,7 +82,7 @@ This project is a Business-Model-Analysis (BMA) tool and helps to develop and ev
 - Create and run db-migration
 ```
     $ yarn typeorm migration:generate -- -n "database init"
-    $ typeorm migration:run
+    $ yarn typeorm migration:run
 ```
 
 - Seed project from scratch (delete data + drop db-schema + run migrations + seed)
