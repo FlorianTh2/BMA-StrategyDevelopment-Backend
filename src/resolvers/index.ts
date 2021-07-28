@@ -14,10 +14,12 @@ import { EvaluationMetric } from "./nested/evaluationMetric";
 import { UserEvaluationMetric } from "./nested/userEvaluationMetric";
 import { maturityModelQuery } from "./maturityModel.resolver";
 import { MaturityModel } from "./nested/maturityModel";
+import { consistencyMatrixMutation, consistencyMatrixQuery } from "./consistencyMatrix.resolver";
 
 const Query = {
     ...projectQuery,
     ...userQuery,
+    ...consistencyMatrixQuery,
     ...userMaturityModelQuery,
     ...userPartialModelQuery,
     ...userEvaluationMetricQuery,
@@ -39,6 +41,7 @@ const NestedFields = {
 
 const Mutation = {
     ...userMutation,
+    ...consistencyMatrixMutation,
     ...userMaturityModelMutation,
 };
 

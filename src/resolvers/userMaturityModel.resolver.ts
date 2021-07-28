@@ -62,7 +62,7 @@ export const userMaturityModelQuery = {
 };
 
 export const userMaturityModelMutation = {
-    async createUserMaturityModel(parent, args, context: ApolloContext, info) {
+    async createConsistencyMatrix(parent, args, context: ApolloContext, info) {
         console.log("got userMaturityModel");
         // resolver input
         const createUserMaturityModel: CreateUserMaturityModelRequest = args.userMaturityModel;

@@ -12,6 +12,11 @@ import { MaturityModel } from "../../database/entities/maturityModel";
 import { maturityModel_partialModel_exampleData } from "../data/maturityModel_PartialModel_ExampleData";
 import { generateSHA512Hash } from "../../utils/authorization/cryptography";
 import * as faker from "faker";
+import { ConsistencyMatrix } from "../../database/entities/consistencyMatrix";
+import * as XLSX from "xlsx";
+import { WorkBook } from "xlsx";
+import * as fs from "fs";
+import path from "path";
 
 export default class CreateBasicSeed implements Seeder {
     public async run(factory: Factory, connection: Connection): Promise<any> {
@@ -24,6 +29,9 @@ export default class CreateBasicSeed implements Seeder {
                 return t;
             })
             .create();
+
+        const file = fs.readFileSync(path.resolve(__dirname, "../data/konsistenzmatrix_5_5.xlsx"));
+        const consistencyMatrixBlob = file.toString("base64");
 
         const users = await factory(User)()
             .map(async (t) => {
@@ -43,10 +51,22 @@ export default class CreateBasicSeed implements Seeder {
             })
             .createMany(1);
 
+        const consistencyMatrices = await factory(ConsistencyMatrix)()
+            .map(async (a) => {
+                a.name = "Beispiel Konsistenzmatrix";
+                a.filename = "konsistenzmatrix_5_5.xlsx";
+                a.fileData = Buffer.from(consistencyMatrixBlob, "base64");
+                a.creator = admin.id.toString();
+                a.updater = admin.id.toString();
+                return a;
+            })
+            .createMany(1);
+
         const projects = await factory(Project)()
             .map(async (a) => {
                 a.user = admin;
                 a.userMaturityModels = userMaturityModels;
+                a.consistencyMatrices = consistencyMatrices;
                 a.creator = admin.id.toString();
                 a.updater = admin.id.toString();
                 return a;

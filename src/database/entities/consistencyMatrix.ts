@@ -8,14 +8,13 @@ import {
     ManyToOne,
     CreateDateColumn,
     UpdateDateColumn,
-    OneToMany,
 } from "typeorm";
 import { UserMaturityModel } from "./userMaturityModel";
 import { User } from "./user";
-import { ConsistencyMatrix } from "./consistencyMatrix";
+import { Project } from "./project";
 
 @Entity()
-export class Project {
+export class ConsistencyMatrix {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -24,23 +23,25 @@ export class Project {
     })
     name: string;
 
+    @Column({
+        length: 100,
+    })
+    filename: string;
+
     @Column("text", {
         nullable: true,
     })
     description: string;
 
-    @ManyToOne(() => User, (user) => user.projects)
-    user: User;
+    @Column({
+        name: "fileData",
+        type: "bytea",
+        nullable: false,
+    })
+    fileData: Buffer;
 
-    @Column({ nullable: true })
-    userId: number;
-
-    @ManyToMany(() => UserMaturityModel, (maturityModel) => maturityModel.projects)
-    @JoinTable()
-    userMaturityModels: UserMaturityModel[];
-
-    @OneToMany(() => ConsistencyMatrix, (consistencyMatrix) => consistencyMatrix.project)
-    consistencyMatrices: ConsistencyMatrix[];
+    @ManyToOne(() => Project, (project) => project.consistencyMatrices)
+    project: Project;
 
     @CreateDateColumn()
     created: Date;

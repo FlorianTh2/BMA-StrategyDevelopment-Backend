@@ -52,7 +52,7 @@ This project is a Business-Model-Analysis (BMA) tool and helps to develop and ev
             - factories: introduce a generic way to create database-entities
             - seeds: the implementation of the actual seeding-process
     - services/
-        - mostly an experimental-folder since this project does not feature a dependency-injection-approch
+        - mostly an experimental-folder since this project does not feature a dependency-injection-approach
     - shield/
         - to protect the graphql-interface, graphql-shield is used
         - graphql-shield-rules and -permissions are stored here

@@ -9,6 +9,9 @@ type Query {
     profileOfUser: User!
     checkEmailAddress(emailAddress: String): Boolean!
 
+    consistencyMatrixOfUser(id: ID!): ConsistencyMatrix
+    consistencyMatricesOfUser: [ConsistencyMatrix!]
+
     userMaturityModel(id: ID!): UserMaturityModel
     userMaturityModels: [UserMaturityModel!]
     userMaturityModelOfUser(id: ID!): UserMaturityModel
@@ -34,6 +37,15 @@ type Mutation {
     register(userRegistrationRequest: UserRegistrationRequest!): String
 
     createUserMaturityModel(userMaturityModel: CreateUserMaturityModelRequest!): UserMaturityModel
+    createConsistencyMatrix(consistencyMatrixModel: CreateConsistencyMatrixRequest!): ConsistencyMatrix
+}
+
+input CreateConsistencyMatrixRequest {
+    name: String!
+    filename: String!
+    description: String!
+    consistencyMatrixBlobBase64String: String!
+    projectId: ID!
 }
 
 input CreateUserMaturityModelRequest{
@@ -88,6 +100,22 @@ type Project {
     userMaturityModels: [UserMaturityModel!]!
     created: String!
     updated: String!
+}
+
+type ConsistencyMatrix {
+    id: ID!
+    name: String!
+    description: String
+    filename: String!
+    fileData: String!
+
+    projects: [Project!]!
+
+
+    created: String!
+    creator: String!
+    updated: String!
+    updater: String!
 }
 
 type UserMaturityModel {
