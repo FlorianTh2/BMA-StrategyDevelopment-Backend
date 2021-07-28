@@ -15,14 +15,20 @@ import { createPartialModelLoaderByEvaluationMetricId } from "../dataLoaders/par
 import { createUserPartialModelLoaderByUserEvaluationMetricId } from "../dataLoaders/userPartialModel/createUserPartialModelLoaderByUserEvaluationMetricId";
 import { createEvaluationMetricLoaderByUserEvaluationMetricId } from "../dataLoaders/evaluationMetric/createEvaluationMetricLoaderByUserEvaluationMetricId";
 import { createPartialModelLoaderByMaturityModelId } from "../dataLoaders/partialModel/createPartialModelLoaderByMaturityModelId";
+import { createProjectLoaderByConsistencyMatrixId } from "../dataLoaders/project/createProjectLoaderByConsistencyMatrixId";
+import { createConsistencyMatrixLoaderByProjectId } from "../dataLoaders/consistencyMatrix/createConsistencyMatrixLoaderByProjectId";
 
 export interface Dataloaders {
     project: {
         loaderByUserId: ReturnType<typeof createProjectLoaderByUserId>;
         loaderByUserMaturityModelId: ReturnType<typeof createProjectLoaderByUserMaturityModelId>;
+        loaderByConsistencyMatrixId: ReturnType<typeof createProjectLoaderByConsistencyMatrixId>;
     };
     user: {
         loaderByProjectId: ReturnType<typeof createUserLoaderByProjectId>;
+    };
+    consistencyMatrix: {
+        loaderByProjectId: ReturnType<typeof createConsistencyMatrixLoaderByProjectId>;
     };
     userMaturityModel: {
         loaderByUserPartialModelId: ReturnType<typeof createUserMaturityModelLoaderByUserPartialModelId>;

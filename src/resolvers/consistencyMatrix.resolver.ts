@@ -26,7 +26,10 @@ export const consistencyMatrixQuery = {
             );
 
         // resolver return
-        const resolverResult = { ...dbResult };
+        const resolverResult = {
+            ...dbResult,
+            fileData: dbResult.fileData.toString("base64"),
+        };
         return resolverResult;
     },
     async consistencyMatricesOfUser(parent, args, context: ApolloContext, info) {
@@ -38,7 +41,13 @@ export const consistencyMatrixQuery = {
             .find({ where: { creator: context.user.id } });
 
         // resolver return
-        const resolverResult = [...dbResult];
+        const resolverResult = dbResult.map((a) => {
+            return {
+                ...a,
+                fileData: a.fileData.toString("base64"),
+            };
+        });
+
         return resolverResult;
     },
 };

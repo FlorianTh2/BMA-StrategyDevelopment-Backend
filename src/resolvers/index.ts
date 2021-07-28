@@ -15,6 +15,7 @@ import { UserEvaluationMetric } from "./nested/userEvaluationMetric";
 import { maturityModelQuery } from "./maturityModel.resolver";
 import { MaturityModel } from "./nested/maturityModel";
 import { consistencyMatrixMutation, consistencyMatrixQuery } from "./consistencyMatrix.resolver";
+import { ConsistencyMatrix } from "./nested/consistencyMatrix";
 
 const Query = {
     ...projectQuery,
@@ -31,6 +32,7 @@ const Query = {
 const NestedFields = {
     User,
     Project,
+    ConsistencyMatrix,
     UserMaturityModel,
     UserPartialModel,
     PartialModel,

@@ -98,6 +98,7 @@ type Project {
     description: String
     user: User!
     userMaturityModels: [UserMaturityModel!]!
+    consistencyMatrices: [ConsistencyMatrix!]!
     created: String!
     updated: String!
 }

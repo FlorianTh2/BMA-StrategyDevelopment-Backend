@@ -16,15 +16,21 @@ import { createPartialModelLoaderByEvaluationMetricId } from "./partialModel/cre
 import { createUserPartialModelLoaderByUserEvaluationMetricId } from "./userPartialModel/createUserPartialModelLoaderByUserEvaluationMetricId";
 import { createEvaluationMetricLoaderByUserEvaluationMetricId } from "./evaluationMetric/createEvaluationMetricLoaderByUserEvaluationMetricId";
 import { createPartialModelLoaderByMaturityModelId } from "./partialModel/createPartialModelLoaderByMaturityModelId";
+import { createProjectLoaderByConsistencyMatrixId } from "./project/createProjectLoaderByConsistencyMatrixId";
+import { createConsistencyMatrixLoaderByProjectId } from "./consistencyMatrix/createConsistencyMatrixLoaderByProjectId";
 
 export function createDataloaders(): Dataloaders {
     return {
         project: {
             loaderByUserId: createProjectLoaderByUserId(),
             loaderByUserMaturityModelId: createProjectLoaderByUserMaturityModelId(),
+            loaderByConsistencyMatrixId: createProjectLoaderByConsistencyMatrixId(),
         },
         user: {
             loaderByProjectId: createUserLoaderByProjectId(),
+        },
+        consistencyMatrix: {
+            loaderByProjectId: createConsistencyMatrixLoaderByProjectId(),
         },
         userMaturityModel: {
             loaderByProjectId: createUserMaturityModelLoaderByProjectId(),
