@@ -37,7 +37,7 @@ type Mutation {
     register(userRegistrationRequest: UserRegistrationRequest!): String
 
     createUserMaturityModel(userMaturityModel: CreateUserMaturityModelRequest!): UserMaturityModel
-    createConsistencyMatrix(consistencyMatrixModel: CreateConsistencyMatrixRequest!): ConsistencyMatrix
+    createConsistencyMatrix(consistencyMatrix: CreateConsistencyMatrixRequest!): ConsistencyMatrix
 }
 
 input CreateConsistencyMatrixRequest {

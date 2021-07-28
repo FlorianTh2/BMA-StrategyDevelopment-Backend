@@ -47,7 +47,7 @@ export const consistencyMatrixMutation = {
     async createConsistencyMatrix(parent, args, context: ApolloContext, info) {
         console.log("got consistencyMatrix");
         // resolver input
-        const createConsistencyMatrix: CreateConsistencyMatrixRequest = args.consistencyMatrixModel;
+        const createConsistencyMatrix: CreateConsistencyMatrixRequest = args.consistencyMatrix;
 
         // resolver business logic
         // steps:
