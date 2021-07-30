@@ -57,6 +57,8 @@ export const consistencyMatrixMutation = {
         console.log("got consistencyMatrix");
         // resolver input
         const createConsistencyMatrix: CreateConsistencyMatrixRequest = args.consistencyMatrix;
+        console.log(createConsistencyMatrix);
+        console.log("file base64 string: ", createConsistencyMatrix.consistencyMatrixBlobBase64String);
 
         // resolver business logic
         // steps:
